@@ -1,25 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styled from 'styled-components';
+import Intro from './components/Intro';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import ContentSection from './components/ContentSection';
+
+const ContentContainer = styled.div`
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  min-height: 100vh;
+  background-color: ${(props) => props.theme.main1};
+`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <ContentContainer>
+        <Header />
+        <ContentSection />
+        <Footer />
+      </ContentContainer>
+      <Intro />
+    </>
   );
 }
 
