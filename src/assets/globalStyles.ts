@@ -35,7 +35,10 @@ export const GlobalStyle = createGlobalStyle`
     border-collapse: collapse;
     border-spacing: 0;
   }
-  * { box-sizing: border-box; }
+  * { 
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+  }
   a {
     cursor: pointer !important;
     outline: none;
@@ -63,6 +66,29 @@ export const GlobalStyle = createGlobalStyle`
     height: 0;
     margin: 0;
     display: none;
+  }
+
+  @keyframes rotate {
+    0% {
+      -webkit-transform: rotateZ(0deg);
+      transform: rotateZ(0deg);
+    }
+    30% {
+      -webkit-transform: rotateZ(180deg);
+      transform: rotateZ(180deg);
+    }
+    50% {
+      -webkit-transform: rotateZ(180deg);
+      transform: rotateZ(180deg);
+    }
+    80% {
+      -webkit-transform: rotateZ(360deg);
+      transform: rotateZ(360deg);
+    }
+    100% {
+      -webkit-transform: rotateZ(360deg);
+      transform: rotateZ(360deg);
+    }
   }
 `;
 
