@@ -5,7 +5,7 @@ import { useState } from 'react';
 import AboutMe from './AboutMe';
 
 const PortfolioHeader = styled.header`
-  padding: 1.5rem 0;
+  padding: 1rem 0;
   position: absolute;
   top: 0;
   left: 0;
@@ -14,12 +14,15 @@ const PortfolioHeader = styled.header`
   z-index: 1;
   font-weight: 600;
   letter-spacing: -1px;
+  @media (min-width: 768px) {
+    padding: 1.5rem 0;
+  }
 `;
 const AboutMeSection = styled.div`
   text-align: left;
   display: flex;
   align-items: center;
-  padding: 0 1.5rem;
+  padding: 0 1rem;
   color: rgba(0, 0, 0, 0.35);
   align-self: center;
   svg {
@@ -36,21 +39,27 @@ const AboutMeSection = styled.div`
       color: rgba(255, 255, 255, 1);
     }
   }
+  @media (min-width: 768px) {
+    padding: 0 1.5rem;
+  }
 `;
 const AboutMeBtn = styled.button`
   border: none;
   background-color: transparent;
-  padding: 3px 8px;
+  padding: 3px 3px;
   font-size: 1rem;
   color: rgba(0, 0, 0, 0.35);
   font-weight: 600;
   &:hover {
     color: rgba(255, 255, 255, 1);
   }
+  @media (min-width: 768px) {
+    padding: 3px 8px;
+  }
 `;
 const ContactMeSection = styled.div`
   text-align: right;
-  padding: 0 2rem;
+  padding: 0 1rem;
   color: rgba(0, 0, 0, 0.35);
   align-self: center;
   span {
@@ -58,10 +67,14 @@ const ContactMeSection = styled.div`
       color: rgba(255, 255, 255, 1);
     }
   }
+  @media (min-width: 768px) {
+    padding: 0 2rem;
+  }
 `;
 
 export default function Header() {
   const [openAboutMe, setOpenAboutMe] = useState(false);
+  const closeModal = () => setOpenAboutMe(false);
   return (
     <>
       <PortfolioHeader className="row">
@@ -82,7 +95,7 @@ export default function Header() {
         </AboutMeSection>
         <ContactMeSection className="col-6">Contact</ContactMeSection>
       </PortfolioHeader>
-      {openAboutMe && <AboutMe />}
+      {openAboutMe && <AboutMe callback={closeModal} />}
     </>
   );
 }

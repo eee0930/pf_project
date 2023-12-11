@@ -1,4 +1,5 @@
-import { createGlobalStyle } from 'styled-components';
+import { motion } from 'framer-motion';
+import styled, { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
   html, body, div, span, applet, object, iframe,
@@ -52,7 +53,7 @@ export const GlobalStyle = createGlobalStyle`
     outline: none;
   }
   body {
-    font-family: 'Poppins', -apple-system, 'Nanum Square', BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    font-family: 'Poppins', -apple-system, 'Nanum Square', 'Nanum Gothic', BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     background-color: #F5F5F7;
     color: #000;
@@ -607,4 +608,14 @@ export const BasicStyle = createGlobalStyle`
   @media (min-width: 768px) {
     .mobile-hidden {display: inline-block;}
   }
+`;
+
+export const TitleCover = styled(motion.h1)`
+  padding: 8px 15px;
+  border-radius: 20px;
+  background-color: #f1f3f4;
+  color: #000;
+  font-size: 14px;
+  display: inline-block;
+  margin-bottom: 2rem;
 `;

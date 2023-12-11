@@ -12,15 +12,6 @@ export interface IWork {
 
 export const workList = [
   {
-    name: 'Momentum',
-    color: '#0E6439',
-    img: ['todo1', 'todo2'],
-    git: 'https://github.com/eee0930/momentum_clone',
-    url: 'https://eee0930.github.io/momentum_clone/',
-    skill: ['JavaScript', 'HTML', 'CSS'],
-    des: '아름다운 배경과 함께 명언, 현재 날씨를 제공해주며, 스케쥴을 정리할 수 있는 앱입니다. 배경과 명언은 랜덤으로 제공됩니다.',
-  },
-  {
     name: 'Cheese Book',
     color: '#F9CC73',
     logo: 'cheesebook.png',
@@ -49,7 +40,7 @@ export const workList = [
     ],
   },
   {
-    name: 'Movie Booth',
+    name: 'Netflix Clone',
     color: '#af3435',
     img: ['moviebooth1', 'moviebooth2'],
     git: 'https://github.com/eee0930/netflix_clone',
@@ -66,21 +57,7 @@ export const workList = [
     des: '최신 영화와 tv 프로그램, 인물 정보들을 제공하며 검색기능이 있는 SPA 사이트입니다. 상세정보에선 영화나 tv 프로 방영 정보와, 등장인물 정보, 관련 프로그램, 트레일러 영상까지 볼 수 있습니다. ',
     imgList: ['movie1', 'movie2', 'movie3', 'movie4'],
   },
-  {
-    name: 'Crypto Tracker',
-    color: '#2F3640',
-    img: ['cripto1', 'cripto2'],
-    git: 'https://github.com/eee0930/crypto_tracker',
-    url: 'https://eee0930.github.io/crypto_tracker/',
-    skill: [
-      'ReactJS',
-      'TypeScript',
-      'Recoil',
-      'ReactQuery',
-      'StyledComponents',
-    ],
-    des: '다양한 종류의 코인과 코인의 현재 시세를 차트로 제공하는 사이트입니다. ',
-  },
+
   {
     name: 'Org Issue App',
     color: '#2A9885',
@@ -104,5 +81,24 @@ export const workList = [
     url: 'https://eee0930.github.io/meowmeow_album/',
     skill: ['JavaScript', 'HTML', 'CSS'],
     des: '폴더별로 정리한 고양이 앨범을 볼 수 있는 앱입니다. Vanilla JS Class Component 방식으로 개발하였습니다.',
+  },
+  {
+    name: 'Momentum',
+    color: '#0E6439',
+    img: ['todo1', 'todo2'],
+    git: 'https://github.com/eee0930/momentum_clone',
+    url: 'https://eee0930.github.io/momentum_clone/',
+    skill: ['JavaScript', 'HTML', 'CSS'],
+    des: '아름다운 배경과 함께 명언, 현재 날씨를 제공해주며, 스케쥴을 정리할 수 있는 앱입니다. 배경과 명언은 랜덤으로 제공됩니다.',
+  },
+  {
+    name: 'playvoice.org',
+    color: '#1b1f40',
+    logo: 'playvoice.png',
+    img: ['', ''],
+    git: 'https://github.com/eee0930/playvoice_project',
+    url: 'https://playvoice.org/',
+    skill: ['JavaScript, jQuery, Thymeleaf, BootStrap, CSS, Chart.js'],
+    des: 'Playvoice는 언어 학습 이론과 AI기반 IT기술을 영어 학습에 적용한 회원 참여형 앱 기반 영어 플랫폼입니다.',
   },
 ];
