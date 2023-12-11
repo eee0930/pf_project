@@ -11,6 +11,9 @@ const AboutMeSection = styled(motion.div)`
   right: 0;
   bottom: 0;
   overflow-y: auto;
+  @media (min-width: 991px) {
+    overflow-y: hidden;
+  }
 `;
 const CloseButton = styled.div`
   position: fixed;
@@ -60,7 +63,7 @@ const AboutSection = styled.div`
   align-self: center;
   color: #000;
 `;
-const SubTitle = styled.div`
+const SubTitle = styled(motion.div)`
   font-size: 4vmax;
   font-weight: 600;
   letter-spacing: -0.03em;
@@ -68,10 +71,23 @@ const SubTitle = styled.div`
   margin-bottom: 2rem;
   line-height: 1.2;
 `;
-const Introduction = styled.div`
+const Introduction = styled(motion.div)`
   font-size: 16px;
   line-height: 1.7;
   margin-bottom: 2rem;
+  span,
+  a {
+    font-weight: 600;
+  }
+  span {
+    color: ${(props) => props.theme.main3};
+  }
+  a {
+    color: ${(props) => props.theme.main6};
+  }
+  @media (min-width: 768px) {
+    margin-right: 1rem;
+  }
 `;
 
 const backVariants = {
@@ -87,6 +103,44 @@ const backVariants = {
   },
   exit: {
     backgroundColor: `rgba(255, 255, 255, 0)`,
+  },
+};
+
+const up1Variants = {
+  initial: { y: 500, opacity: 0 },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      delay: 0.2,
+      duration: 0.5,
+    },
+  },
+};
+const up2Variants = {
+  initial: { y: 500, opacity: 0 },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: 'spring',
+      bounce: 0.3,
+      delay: 0.4,
+      duration: 0.8,
+    },
+  },
+};
+const up3Variants = {
+  initial: { y: 500, opacity: 0 },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: 'spring',
+      bounce: 0.3,
+      delay: 0.6,
+      duration: 0.8,
+    },
   },
 };
 
@@ -112,13 +166,26 @@ export default function AboutMe({ callback }: IAboutMe) {
               />
             </ImageSection>
             <AboutSection className="col-12 col-md-7">
-              <TitleCover>About</TitleCover>
-              <SubTitle>
+              <TitleCover
+                variants={up1Variants}
+                initial="initial"
+                animate="animate"
+              >
+                About
+              </TitleCover>
+              <SubTitle
+                variants={up2Variants}
+                initial="initial"
+                animate="animate"
+              >
                 Front-End Developer
                 <br />
                 HwaYeon Song
               </SubTitle>
               <Introduction
+                variants={up3Variants}
+                initial="initial"
+                animate="animate"
                 dangerouslySetInnerHTML={{ __html: introduction }}
               />
             </AboutSection>

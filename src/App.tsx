@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import Intro from './components/Intro';
 import Header from './components/Header';
-import Footer from './components/Footer';
 import ContentSection from './components/ContentSection';
 
 const ContentContainer = styled.div`
@@ -18,7 +17,6 @@ function App() {
       <ContentContainer>
         <Header />
         <ContentSection />
-        <Footer />
       </ContentContainer>
       <Intro />
     </>

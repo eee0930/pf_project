@@ -53,7 +53,7 @@ export const GlobalStyle = createGlobalStyle`
     outline: none;
   }
   body {
-    font-family: 'Poppins', -apple-system, 'Nanum Square', 'Nanum Gothic', BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    font-family: 'Poppins', -apple-system, 'IBM Plex Sans KR', 'Nanum Gothic', BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     background-color: #F5F5F7;
     color: #000;

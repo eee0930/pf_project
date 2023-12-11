@@ -95,10 +95,10 @@ export const workList = [
     name: 'playvoice.org',
     color: '#1b1f40',
     logo: 'playvoice.png',
-    img: ['', ''],
+    img: ['playvoice1'],
     git: 'https://github.com/eee0930/playvoice_project',
     url: 'https://playvoice.org/',
     skill: ['JavaScript, jQuery, Thymeleaf, BootStrap, CSS, Chart.js'],
-    des: 'Playvoice는 언어 학습 이론과 AI기반 IT기술을 영어 학습에 적용한 회원 참여형 앱 기반 영어 플랫폼입니다.',
+    des: 'Playvoice는 언어 학습 이론과 AI기반 IT기술을 영어 학습에 적용한 회원 참여형 앱 기반 영어 플랫폼입니다. (현재 운영 중이지 않음)',
   },
 ];

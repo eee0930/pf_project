@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { gitSvg } from '../assets/svgs';
-import { gitUrl } from '../assets/ment';
+import { email, gitUrl } from '../assets/ment';
 import { useState } from 'react';
 import AboutMe from './AboutMe';
 
@@ -93,7 +93,9 @@ export default function Header() {
             />
           </span>
         </AboutMeSection>
-        <ContactMeSection className="col-6">Contact</ContactMeSection>
+        <ContactMeSection className="col-6">
+          <a href={`mailto:${email}`}>Contact</a>
+        </ContactMeSection>
       </PortfolioHeader>
       {openAboutMe && <AboutMe callback={closeModal} />}
     </>
