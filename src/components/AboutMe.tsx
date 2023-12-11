@@ -33,6 +33,10 @@ const CloseButton = styled.div`
     top: 1.5rem;
     left: 2rem;
   }
+  @media (min-width: 1200px) {
+    top: 2rem;
+    left: 4rem;
+  }
 `;
 const AboutMeWrapper = styled.div`
   position: relative;
@@ -87,6 +91,9 @@ const Introduction = styled(motion.div)`
   }
   @media (min-width: 768px) {
     margin-right: 1rem;
+  }
+  @media (min-width: 1200px) {
+    margin-right: 5rem;
   }
 `;
 

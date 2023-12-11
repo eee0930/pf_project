@@ -55,6 +55,10 @@ const CloseButton = styled.button`
   @media (min-width: 768px) {
     left: calc(0.5rem + 5%);
   }
+  @media (min-width: 1200px) {
+    top: 8rem;
+    left: calc(2rem + 5%);
+  }
 `;
 
 const ModalContentSection = styled(motion.div)``;
@@ -96,12 +100,18 @@ const UrlContent = styled.div`
     color: ${(props) => props.theme.main2};
     font-weight: 600;
   }
+  @media (min-width: 1200px) {
+    font-size: 16px;
+  }
 `;
 const DesContent = styled.div`
   margin-top: 2rem;
   font-size: 15px;
   line-height: 1.5;
   color: #000;
+  @media (min-width: 1200px) {
+    font-size: 16px;
+  }
 `;
 const widthVariant = {
   initial: {

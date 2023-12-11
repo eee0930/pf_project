@@ -19,6 +19,10 @@ const CardCover = styled(motion.div)`
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  @media (min-width: 1200px) {
+    width: 350px;
+    height: 562.5px;
+  }
 `;
 
 const hoverVariant = {
@@ -71,6 +75,10 @@ const BackCardCover = styled.div`
   }
   &:nth-child(3) {
     transform: translate(-50%, -50%) rotateZ(3deg);
+  }
+  @media (min-width: 1200px) {
+    width: 350px;
+    height: 562.5px;
   }
 `;
 interface IBackCard {

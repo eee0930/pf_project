@@ -17,12 +17,12 @@ export const gitUrl = 'https://github.com/eee0930';
 export const email = 'lazyhysong@gmail.com';
 
 export const backColors = [
-  '#FFD16A',
-  '#DF463A',
-  '#3F79B2',
-  '#31725c',
-  '#46548F',
-  '#347437',
+  'rgb(255,209,106)',
+  'rgb(223,70,58)',
+  'rgb(63,121,178)',
+  'rgb(49,114,92)',
+  'rgb(70,84,143)',
+  'rgb(52,116,55)',
 ];
 
 export const projectTitle = [

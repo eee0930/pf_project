@@ -35,29 +35,28 @@ const Logo = styled.img`
 const Title = styled.div`
   font-size: 2rem;
   text-align: center;
+  margin-bottom: 1rem;
 `;
 
 const slideVariants = {
   initial: (isNext: boolean) => {
     return {
-      x: isNext ? -500 : 500,
+      x: isNext ? 0 : -500,
       transform: 'translateY(-50%)',
     };
   },
-  animate: (isNext: boolean) => {
-    return {
-      x: 0,
-      transform: 'translate(-50%,-50%)',
-      transition: {
-        type: 'spring',
-        delay: 0.1,
-        duration: 1,
-      },
-    };
+  animate: {
+    x: 0,
+    transform: 'translate(-50%,-50%)',
+    transition: {
+      type: 'spring',
+      delay: 0.1,
+      duration: 1,
+    },
   },
   exit: (isNext: boolean) => {
     return {
-      x: isNext ? 500 : -500,
+      x: isNext ? -500 : 0,
       transform: 'translateY(-50%)',
     };
   },
@@ -100,6 +99,7 @@ export default function WorkCards({ idx, nextIdx, isNext }: IWorkCards) {
         <AnimatePresence initial={false} custom={isNext}>
           <PointCard
             key={idx}
+            custom={isNext}
             variants={slideVariants}
             initial="initial"
             animate="animate"

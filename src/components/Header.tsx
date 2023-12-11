@@ -17,6 +17,9 @@ const PortfolioHeader = styled.header`
   @media (min-width: 768px) {
     padding: 1.5rem 0;
   }
+  @media (min-width: 1200px) {
+    padding: 2rem 0;
+  }
 `;
 const AboutMeSection = styled.div`
   text-align: left;
@@ -42,6 +45,9 @@ const AboutMeSection = styled.div`
   @media (min-width: 768px) {
     padding: 0 1.5rem;
   }
+  @media (min-width: 1200px) {
+    padding: 0 2rem;
+  }
 `;
 const AboutMeBtn = styled.button`
   border: none;
@@ -56,6 +62,10 @@ const AboutMeBtn = styled.button`
   @media (min-width: 768px) {
     padding: 3px 8px;
   }
+  @media (min-width: 1200px) {
+    font-size: 1.2rem;
+    padding: 3px 10px;
+  }
 `;
 const ContactMeSection = styled.div`
   text-align: right;
@@ -69,6 +79,10 @@ const ContactMeSection = styled.div`
   }
   @media (min-width: 768px) {
     padding: 0 2rem;
+  }
+  @media (min-width: 1200px) {
+    font-size: 1.2rem;
+    padding: 0 4rem;
   }
 `;
 

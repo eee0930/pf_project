@@ -618,4 +618,8 @@ export const TitleCover = styled(motion.h1)`
   font-size: 14px;
   display: inline-block;
   margin-bottom: 2rem;
+  @media (min-width: 1200px) {
+    font-size: 16px;
+    padding: 10px 17px;
+  }
 `;

@@ -8,6 +8,9 @@ interface IProject {
 
 const ProjectWrapper = styled.div`
   padding: 3rem 0;
+  @media (min-width: 1200px) {
+    padding: 5rem 0;
+  }
 `;
 const DefaultTitleSection = styled.div`
   line-height: 1.8;
@@ -24,9 +27,15 @@ const DefaultTitleSection = styled.div`
     margin-right: 5px;
     font-size: 14px;
   }
+  @media (min-width: 1200px) {
+    font-size: 16px;
+    label {
+      font-size: 15px;
+    }
+  }
 `;
 const ContentSection = styled.div`
-  margin-top: 3rem;
+  margin-top: 5rem;
   line-height: 1.2;
   img {
     max-width: 300px;
@@ -38,12 +47,18 @@ const ContentSection = styled.div`
       margin: 0.5rem 0 0;
     }
   }
+  @media (min-width: 1200px) {
+    margin-top: 5rem;
+  }
 `;
 const Title = styled.div`
   margin-bottom: 1rem;
   color: ${(props) => props.theme.main2};
   font-weight: 600;
   font-size: 18px;
+  @media (min-width: 1200px) {
+    font-size: 20px;
+  }
 `;
 const Ol = styled.ol`
   font-size: 15px;
@@ -51,6 +66,9 @@ const Ol = styled.ol`
     position: relative;
     margin-bottom: 1rem;
     line-height: 1.5;
+  }
+  @media (min-width: 1200px) {
+    font-size: 16px;
   }
 `;
 const Number = styled.span`

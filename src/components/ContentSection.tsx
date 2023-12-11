@@ -56,6 +56,7 @@ const NextButton = styled(Button)`
 export default function ContentSection() {
   const [idx, setIdx] = useState(0);
   const [nextIdx, setNextIdx] = useState(1);
+  const [prevIdx, setPrevIdx] = useState(5);
   const [isNext, setIsNext] = useState(true);
   const getNextIdx = (isNext: boolean) => {
     if (isNext) {
@@ -66,22 +67,27 @@ export default function ContentSection() {
       setIdx((prev) => (prev - 1 < 0 ? 5 : prev - 1));
     }
   };
-  useEffect(
-    () =>
-      setNextIdx(() => {
-        if (isNext) {
-          return idx + 1 > 5 ? 0 : idx + 1;
-        } else {
-          return idx - 1 < 0 ? 5 : idx - 1;
-        }
-      }),
-    [idx, isNext]
-  );
+  useEffect(() => {
+    setNextIdx(() => {
+      if (isNext) {
+        return idx + 1 > 5 ? 0 : idx + 1;
+      } else {
+        return idx - 1 < 0 ? 5 : idx - 1;
+      }
+    });
+    setPrevIdx(() => {
+      if (isNext) {
+        return idx - 1 < 0 ? 5 : idx - 1;
+      } else {
+        return idx + 1 > 5 ? 0 : idx + 1;
+      }
+    });
+  }, [idx, isNext]);
 
   return (
     <ContentContainer>
       <AbsoluteWrapper>
-        <BackDivide idx={idx} />
+        <BackDivide idx={idx} prevIdx={prevIdx} isNext={isNext} />
       </AbsoluteWrapper>
       <AbsoluteWrapper>
         <NextButtonSection>

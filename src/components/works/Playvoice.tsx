@@ -4,6 +4,9 @@ import { backColors } from '../../assets/ment';
 
 const ProjectWrapper = styled.div`
   padding: 3rem 0;
+  @media (min-width: 1200px) {
+    padding: 5rem 0;
+  }
 `;
 const DefaultTitleSection = styled.div`
   line-height: 1.8;
@@ -21,13 +24,20 @@ const DefaultTitleSection = styled.div`
     margin-right: 5px;
     font-size: 14px;
   }
+  @media (min-width: 1200px) {
+    margin-bottom: 5rem;
+    font-size: 16px;
+  }
 `;
 const ContentSection = styled.div`
   margin-top: 5rem;
-  line-height: 1.2;
+  line-height: 1.5;
   img {
     max-width: 500px;
     margin-bottom: 0.5rem;
+  }
+  @media (min-width: 1200px) {
+    font-size: 16px;
   }
 `;
 const Title = styled.div`
@@ -35,6 +45,10 @@ const Title = styled.div`
   color: ${(props) => props.theme.main2};
   font-weight: 600;
   font-size: 18px;
+
+  @media (min-width: 1200px) {
+    font-size: 20px;
+  }
 `;
 const Ol = styled.ol`
   line-height: 1.2;
@@ -42,6 +56,9 @@ const Ol = styled.ol`
   li {
     position: relative;
     margin-bottom: 1rem;
+  }
+  @media (min-width: 1200px) {
+    font-size: 16px;
   }
 `;
 const Number = styled.span`
@@ -89,6 +106,7 @@ export default function Playvoice() {
           <ImageSection>
             {pro.img.map((image, i) => (
               <img
+                key={i}
                 src={`${process.env.PUBLIC_URL}/works/playvoice/${image}`}
                 alt={pro.name}
               />
@@ -107,6 +125,7 @@ export default function Playvoice() {
         <ImageSection>
           {playvoiceWork.img.map((image, i) => (
             <img
+              key={i}
               src={`${process.env.PUBLIC_URL}/works/playvoice/${image}`}
               alt="mypage"
             />
