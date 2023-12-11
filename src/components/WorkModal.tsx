@@ -34,6 +34,9 @@ const ModalWrapper = styled(motion.div)`
   @media (min-width: 768px) {
     padding: 4rem;
   }
+  @media (min-width: 1200px) {
+    padding: 8rem;
+  }
 `;
 const CloseButton = styled.button`
   position: fixed;

@@ -40,11 +40,17 @@ const PrevButton = styled(Button)`
   @media (min-width: 768px) {
     left: 7rem;
   }
+  @media (min-width: 1200px) {
+    left: 15rem;
+  }
 `;
 const NextButton = styled(Button)`
   right: 3rem;
   @media (min-width: 768px) {
     right: 7rem;
+  }
+  @media (min-width: 1200px) {
+    right: 15rem;
   }
 `;
 export default function ContentSection() {
