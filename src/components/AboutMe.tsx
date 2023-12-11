@@ -49,7 +49,7 @@ const AboutMeContainer = styled.div`
   width: 100%;
   min-height: 100%;
 `;
-const ImageSection = styled.div`
+const ImageSection = styled(motion.div)`
   text-align: center;
   align-self: center;
   img {
@@ -105,7 +105,18 @@ const backVariants = {
     backgroundColor: `rgba(255, 255, 255, 0)`,
   },
 };
-
+const fadeVariants = {
+  initial: {
+    opacity: 0,
+  },
+  animate: {
+    opacity: 1,
+    transition: {
+      delay: 0.4,
+      duration: 0.5,
+    },
+  },
+};
 const up1Variants = {
   initial: { y: 500, opacity: 0 },
   animate: {
@@ -159,7 +170,12 @@ export default function AboutMe({ callback }: IAboutMe) {
         <CloseButton onClick={callback}>&times;</CloseButton>
         <AboutMeWrapper>
           <AboutMeContainer className="row">
-            <ImageSection className="col-12 col-md-5">
+            <ImageSection
+              variants={fadeVariants}
+              initial="initial"
+              animate="animate"
+              className="col-12 col-md-5"
+            >
               <img
                 src={`${process.env.PUBLIC_URL}/img/coding_hard.png`}
                 alt="about me"

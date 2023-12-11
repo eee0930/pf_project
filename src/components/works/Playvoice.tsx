@@ -9,7 +9,7 @@ const DefaultTitleSection = styled.div`
   line-height: 1.8;
   letter-spacing: -0.02em;
   font-size: 15px;
-  margin-bottom: 4rem;
+  margin-bottom: 5rem;
   span {
     color: ${(props) => props.theme.main2};
     font-weight: 600;
@@ -23,7 +23,7 @@ const DefaultTitleSection = styled.div`
   }
 `;
 const ContentSection = styled.div`
-  margin-top: 3rem;
+  margin-top: 5rem;
   line-height: 1.2;
   img {
     max-width: 500px;
@@ -57,6 +57,7 @@ const ImageSection = styled.div`
     display: block;
     margin: 1rem 0;
     max-width: 500px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
   }
 `;
 export default function Playvoice() {

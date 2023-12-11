@@ -38,7 +38,7 @@ const ModalWrapper = styled(motion.div)`
 const CloseButton = styled.button`
   position: fixed;
   top: 6rem;
-  left: calc(0.5rem + 5%);
+  right: calc(1rem + 5%);
   width: 45px;
   height: 45px;
   border-radius: 50%;
@@ -49,6 +49,9 @@ const CloseButton = styled.button`
   text-align: center;
   cursor: pointer;
   z-index: 500;
+  @media (min-width: 768px) {
+    left: calc(0.5rem + 5%);
+  }
 `;
 
 const ModalContentSection = styled(motion.div)``;
@@ -57,9 +60,24 @@ const DefaultInfoSection = styled.div`
   padding-bottom: 3rem;
   margin-bototm: 3rem;
 `;
+const MoniterSection = styled.div`
+  margin-top: 3rem;
+  @media (min-width: 768px) {
+    margin-top: 0;
+  }
+`;
+const LogoSection = styled.div`
+  text-align: center;
+  @media (min-width: 768px) {
+    text-align: left;
+  }
+`;
 const Logo = styled.img`
   height: 120px;
-  margin-bottom: 1rem;
+  margin: 0 auto 1rem;
+  @media (min-width: 768px) {
+    margin: 0 0 1rem;
+  }
 `;
 const Title = styled.div`
   font-size: 3rem;
@@ -85,9 +103,11 @@ const DesContent = styled.div`
 const widthVariant = {
   initial: {
     width: '280px',
+    height: '450px',
   },
   animate: {
     width: 'calc(100vw - 10%)',
+    height: 'auto',
     transition: {
       delay: 0.1,
       duration: 0.3,
@@ -97,11 +117,14 @@ const widthVariant = {
 const fadeVariant = {
   initial: {
     opacity: 0,
+    scale: 0,
   },
   animate: {
     opacity: 1,
+    scale: 1,
     transition: {
-      duration: 0.4,
+      delay: 0.1,
+      duration: 0.3,
     },
   },
 };
@@ -136,7 +159,7 @@ export default function WorkModal({ idx, callback }: IWorkModal) {
               >
                 {work.name}
               </TitleCover>
-              <div>
+              <LogoSection>
                 {work.logo ? (
                   <Logo
                     src={`${process.env.PUBLIC_URL}/works/logo/${work.logo}`}
@@ -145,7 +168,7 @@ export default function WorkModal({ idx, callback }: IWorkModal) {
                 ) : (
                   <Title>{work.name}</Title>
                 )}
-              </div>
+              </LogoSection>
               <UrlContent>
                 <span>Git :</span>{' '}
                 <a href={work.git} target="_blank" rel="noreferrer">
@@ -163,9 +186,9 @@ export default function WorkModal({ idx, callback }: IWorkModal) {
               </UrlContent>
               <DesContent>{work.des}</DesContent>
             </div>
-            <div className="col-12 col-md-6 align-self-center">
+            <MoniterSection className="col-12 col-md-6 align-self-center">
               <MoniterImg idx={idx} />
-            </div>
+            </MoniterSection>
           </DefaultInfoSection>
           {idx === 5 ? <Playvoice /> : <Projects idx={idx} />}
         </ModalContentSection>

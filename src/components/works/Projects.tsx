@@ -27,9 +27,16 @@ const DefaultTitleSection = styled.div`
 `;
 const ContentSection = styled.div`
   margin-top: 3rem;
+  line-height: 1.2;
   img {
-    max-width: 500px;
-    margin-bottom: 0.5rem;
+    max-width: 300px;
+    margin: 0 auto 0.5rem;
+  }
+  @media (min-width: 768px) {
+    img {
+      max-width: 500px;
+      margin: 0.5rem 0 0;
+    }
   }
 `;
 const Title = styled.div`
@@ -39,18 +46,18 @@ const Title = styled.div`
   font-size: 18px;
 `;
 const Ol = styled.ol`
-  line-height: 1.2;
   font-size: 15px;
   li {
     position: relative;
     margin-bottom: 1rem;
+    line-height: 1.5;
   }
 `;
 const Number = styled.span`
   position: absolute;
   top: 0;
-  left: -1rem;
-  font-size: 16px;
+  left: -1.5rem;
+  font-size: 18px;
   font-weight: 600;
   color: ${(props) => props.theme.main2};
 `;

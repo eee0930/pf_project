@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import BackDivide from './contents/BackDivide';
 import WorkCards from './contents/WorkCards';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const ContentContainer = styled.div`
   min-height: 100vh;
@@ -49,6 +49,7 @@ const NextButton = styled(Button)`
 `;
 export default function ContentSection() {
   const [idx, setIdx] = useState(0);
+  const [nextIdx, setNextIdx] = useState(1);
   const [isNext, setIsNext] = useState(true);
   const getNextIdx = (isNext: boolean) => {
     if (isNext) {
@@ -59,6 +60,18 @@ export default function ContentSection() {
       setIdx((prev) => (prev - 1 < 0 ? 5 : prev - 1));
     }
   };
+  useEffect(
+    () =>
+      setNextIdx(() => {
+        if (isNext) {
+          return idx + 1 > 5 ? 0 : idx + 1;
+        } else {
+          return idx - 1 < 0 ? 5 : idx - 1;
+        }
+      }),
+    [idx, isNext]
+  );
+
   return (
     <ContentContainer>
       <AbsoluteWrapper>
@@ -69,7 +82,7 @@ export default function ContentSection() {
           <PrevButton onClick={() => getNextIdx(false)}>prev</PrevButton>
           <NextButton onClick={() => getNextIdx(true)}>next</NextButton>
         </NextButtonSection>
-        <WorkCards idx={idx} isNext={isNext} />
+        <WorkCards idx={idx} nextIdx={nextIdx} isNext={isNext} />
       </AbsoluteWrapper>
     </ContentContainer>
   );
