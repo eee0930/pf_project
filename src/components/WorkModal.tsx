@@ -51,7 +51,7 @@ const CloseButton = styled.button`
   z-index: 500;
 `;
 
-const ModalContentSection = styled.div``;
+const ModalContentSection = styled(motion.div)``;
 const DefaultInfoSection = styled.div`
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   padding-bottom: 3rem;
@@ -68,7 +68,7 @@ const Title = styled.div`
 `;
 const UrlContent = styled.div`
   margin-top: 2rem;
-  line-height: 1.5;
+  line-height: 1.8;
   letter-spacing: -0.02em;
   font-size: 15px;
   span {
@@ -94,6 +94,17 @@ const widthVariant = {
     },
   },
 };
+const fadeVariant = {
+  initial: {
+    opacity: 0,
+  },
+  animate: {
+    opacity: 1,
+    transition: {
+      duration: 0.4,
+    },
+  },
+};
 interface IWorkModal {
   idx: number;
   callback: () => void;
@@ -113,7 +124,11 @@ export default function WorkModal({ idx, callback }: IWorkModal) {
         layoutId="work"
       >
         <CloseButton onClick={callback}>&times;</CloseButton>
-        <ModalContentSection>
+        <ModalContentSection
+          variants={fadeVariant}
+          initial="initial"
+          animate="animate"
+        >
           <DefaultInfoSection className="row">
             <div className="col-12 col-md-6">
               <TitleCover
@@ -138,9 +153,13 @@ export default function WorkModal({ idx, callback }: IWorkModal) {
                 </a>
                 <br />
                 <span>Website :</span>{' '}
-                <a href={work.url} target="_blank" rel="noreferrer">
-                  {work.url}
-                </a>
+                {idx === 5 ? (
+                  `${work.url} (현재 운영 중이지 않음)`
+                ) : (
+                  <a href={work.url} target="_blank" rel="noreferrer">
+                    {work.url}
+                  </a>
+                )}
               </UrlContent>
               <DesContent>{work.des}</DesContent>
             </div>
