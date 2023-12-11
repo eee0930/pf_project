@@ -31,8 +31,10 @@ const hoverVariant = {
     rotateZ: 0,
   },
   hover: {
-    scale: 1.1,
-    rotateZ: 5,
+    scale: 1.05,
+    rotateZ: -5,
+    rotateY: 20,
+    perspective: 300,
     transition: {
       duration: 0.2,
     },
