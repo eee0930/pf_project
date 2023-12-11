@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import { TitleCover } from '../assets/globalStyles';
 import { workList } from '../assets/works';
 import MoniterImg from './contents/MoniterImg';
+import Playvoice from './works/Playvoice';
+import Projects from './works/Projects';
 const ModalContainer = styled.div`
   position: fixed;
   top: 0;
@@ -50,9 +52,13 @@ const CloseButton = styled.button`
 `;
 
 const ModalContentSection = styled.div``;
+const DefaultInfoSection = styled.div`
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 3rem;
+  margin-bototm: 3rem;
+`;
 const Logo = styled.img`
-  margin-top: 3rem;
-  height: 150px;
+  height: 120px;
   margin-bottom: 1rem;
 `;
 const Title = styled.div`
@@ -108,7 +114,7 @@ export default function WorkModal({ idx, callback }: IWorkModal) {
       >
         <CloseButton onClick={callback}>&times;</CloseButton>
         <ModalContentSection>
-          <div className="row">
+          <DefaultInfoSection className="row">
             <div className="col-12 col-md-6">
               <TitleCover
                 style={{ backgroundColor: backColors[idx], color: '#fff' }}
@@ -141,7 +147,8 @@ export default function WorkModal({ idx, callback }: IWorkModal) {
             <div className="col-12 col-md-6 align-self-center">
               <MoniterImg idx={idx} />
             </div>
-          </div>
+          </DefaultInfoSection>
+          {idx === 5 ? <Playvoice /> : <Projects idx={idx} />}
         </ModalContentSection>
       </ModalWrapper>
     </ModalContainer>

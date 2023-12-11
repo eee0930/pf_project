@@ -53,10 +53,10 @@ export default function ContentSection() {
   const getNextIdx = (isNext: boolean) => {
     if (isNext) {
       setIsNext(true);
-      setIdx((prev) => (prev + 1 > 5 ? 0 : prev + 1));
+      setIdx((prev) => (prev + 1 > 4 ? 0 : prev + 1));
     } else {
       setIsNext(false);
-      setIdx((prev) => (prev - 1 < 0 ? 5 : prev - 1));
+      setIdx((prev) => (prev - 1 < 0 ? 4 : prev - 1));
     }
   };
   return (
