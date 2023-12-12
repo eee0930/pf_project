@@ -22,18 +22,23 @@ const BackVariant = {
   initial: (isNext: boolean) => {
     return {
       x: isNext ? '100%' : '-100%',
+      borderRadius: isNext ? '80% 0 0 80%' : '0 80% 80% 0',
     };
   },
-  animate: {
-    x: 0,
-    transition: {
-      type: 'linear',
-      duration: 0.5,
-    },
+  animate: (isNext: boolean) => {
+    return {
+      x: 0,
+      borderRadius: 0,
+      transition: {
+        type: 'linear',
+        duration: 0.8,
+      },
+    };
   },
   exit: (isNext: boolean) => {
     return {
       x: isNext ? '-100%' : '100%',
+      borderRadius: 0,
     };
   },
 };

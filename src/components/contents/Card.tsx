@@ -10,18 +10,19 @@ interface ICard {
 const CardCover = styled(motion.div)`
   width: 280px;
   height: 450px;
+  padding: 1.5rem;
   border-radius: 1.5rem;
   background-color: #fff;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
   overflow: hidden;
+  transform: perspective(300px);
   @media (min-width: 1200px) {
-    width: 350px;
-    height: 562.5px;
+    width: 300px;
+    height: 500px;
   }
 `;
 
@@ -29,14 +30,14 @@ const hoverVariant = {
   initial: {
     scale: 1,
     rotateZ: 0,
+    rotateY: 0,
   },
   hover: {
-    scale: 1.05,
-    rotateZ: -5,
-    rotateY: 20,
-    perspective: 300,
+    scale: 1.1,
+    rotateZ: -10,
+    rotateY: 30,
     transition: {
-      duration: 0.2,
+      duration: 0.4,
     },
   },
 };
@@ -58,7 +59,8 @@ const BackCardCover = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  padding: 1.5rem;
+  transform: translate(-50%, -50%) perspective(300px);
   width: 280px;
   height: 450px;
   border-radius: 1.5rem;
@@ -67,20 +69,19 @@ const BackCardCover = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   overflow: hidden;
   &:nth-child(1) {
-    transform: translate(-50%, -50%) rotateZ(9deg);
+    transform: translate(-50%, -50%) rotateZ(9deg) perspective(300px);
   }
   &:nth-child(2) {
-    transform: translate(-50%, -50%) rotateZ(6deg);
+    transform: translate(-50%, -50%) rotateZ(6deg) perspective(300px);
   }
   &:nth-child(3) {
-    transform: translate(-50%, -50%) rotateZ(3deg);
+    transform: translate(-50%, -50%) rotateZ(3deg) perspective(300px);
   }
   @media (min-width: 1200px) {
-    width: 350px;
-    height: 562.5px;
+    width: 300px;
+    height: 500px;
   }
 `;
 interface IBackCard {

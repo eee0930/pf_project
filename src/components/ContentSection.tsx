@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import BackDivide from './contents/BackDivide';
 import WorkCards from './contents/WorkCards';
 import { useEffect, useState } from 'react';
+import { workLen } from '../assets/works';
 
 const ContentContainer = styled.div`
   min-height: 100vh;
@@ -56,30 +57,24 @@ const NextButton = styled(Button)`
 export default function ContentSection() {
   const [idx, setIdx] = useState(0);
   const [nextIdx, setNextIdx] = useState(1);
-  const [prevIdx, setPrevIdx] = useState(5);
+  const [prevIdx, setPrevIdx] = useState(workLen - 1);
   const [isNext, setIsNext] = useState(true);
   const getNextIdx = (isNext: boolean) => {
     if (isNext) {
       setIsNext(true);
-      setIdx((prev) => (prev + 1 > 5 ? 0 : prev + 1));
+      setIdx((prev) => (prev + 1 > workLen - 1 ? 0 : prev + 1));
     } else {
       setIsNext(false);
-      setIdx((prev) => (prev - 1 < 0 ? 5 : prev - 1));
+      setIdx((prev) => (prev - 1 < 0 ? workLen - 1 : prev - 1));
     }
   };
   useEffect(() => {
-    setNextIdx(() => {
-      if (isNext) {
-        return idx + 1 > 5 ? 0 : idx + 1;
-      } else {
-        return idx - 1 < 0 ? 5 : idx - 1;
-      }
-    });
+    setNextIdx(() => (idx + 1 > workLen - 1 ? 0 : idx + 1));
     setPrevIdx(() => {
       if (isNext) {
-        return idx - 1 < 0 ? 5 : idx - 1;
+        return idx - 1 < 0 ? workLen - 1 : idx - 1;
       } else {
-        return idx + 1 > 5 ? 0 : idx + 1;
+        return idx + 1 > workLen - 1 ? 0 : idx + 1;
       }
     });
   }, [idx, isNext]);

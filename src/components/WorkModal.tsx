@@ -24,7 +24,7 @@ const BackgroundContainer = styled.div`
 `;
 const ModalWrapper = styled(motion.div)`
   position: relative;
-  width: calc(100vw - 10%);
+  width: calc(100vw - 15%);
   min-height: calc(100vh - 2rem);
   margin: 5rem auto 1rem;
   background-color: #fff;
@@ -41,7 +41,7 @@ const ModalWrapper = styled(motion.div)`
 const CloseButton = styled.button`
   position: fixed;
   top: 6rem;
-  right: calc(1rem + 5%);
+  right: calc(1rem + 7.5%);
   width: 45px;
   height: 45px;
   border-radius: 50%;
@@ -53,11 +53,11 @@ const CloseButton = styled.button`
   cursor: pointer;
   z-index: 500;
   @media (min-width: 768px) {
-    left: calc(0.5rem + 5%);
+    left: calc(0.5rem + 7.5%);
   }
   @media (min-width: 1200px) {
     top: 8rem;
-    left: calc(2rem + 5%);
+    left: calc(2rem + 7.5%);
   }
 `;
 
@@ -68,6 +68,7 @@ const DefaultInfoSection = styled.div`
   margin-bototm: 3rem;
 `;
 const MoniterSection = styled.div`
+  padding-left: 1rem;
   margin-top: 3rem;
   @media (min-width: 768px) {
     margin-top: 0;
@@ -119,7 +120,7 @@ const widthVariant = {
     height: '450px',
   },
   animate: {
-    width: 'calc(100vw - 10%)',
+    width: 'calc(100vw - 15%)',
     height: 'auto',
     transition: {
       delay: 0.1,

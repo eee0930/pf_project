@@ -85,14 +85,23 @@ const ContactMeSection = styled.div`
     padding: 0 4rem;
   }
 `;
-
+const IconSection = styled.div`
+  padding: 0 1rem;
+  align-self: center;
+  @media (min-width: 768px) {
+    padding: 0 2rem;
+  }
+  @media (min-width: 1200px) {
+    padding: 0 4rem;
+  }
+`;
 export default function Header() {
   const [openAboutMe, setOpenAboutMe] = useState(false);
   const closeModal = () => setOpenAboutMe(false);
   return (
     <>
       <PortfolioHeader className="row">
-        <AboutMeSection className="col-6">
+        <AboutMeSection className="col-6 col-md-3">
           <span>
             <AboutMeBtn onClick={() => setOpenAboutMe(true)}>
               About Me
@@ -107,7 +116,8 @@ export default function Header() {
             />
           </span>
         </AboutMeSection>
-        <ContactMeSection className="col-6">
+        <IconSection className="d-none d-md-inline-block col-md-6"></IconSection>
+        <ContactMeSection className="col-6 col-md-3">
           <a href={`mailto:${email}`}>Contact</a>
         </ContactMeSection>
       </PortfolioHeader>

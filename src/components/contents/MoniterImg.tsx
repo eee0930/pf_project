@@ -7,7 +7,7 @@ interface IMoniterImg {
 }
 
 const MoniterWrapper = styled.div`
-  width: 90%;
+  width: 100%;
   margin: 2rem auto;
   min-height: 1px;
   position: relative;
@@ -33,7 +33,7 @@ const MobileMoniter = styled.div`
   border-radius: 0.5rem;
   position: absolute;
   bottom: -10%;
-  right: 7%;
+  right: 0%;
   box-shadow: inset -1px -1px 4px rgba(0, 0, 0, 0.2),
     3px 3px 7px rgba(0, 0, 0, 0.2);
 

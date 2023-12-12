@@ -616,10 +616,26 @@ export const TitleCover = styled(motion.h1)`
   background-color: #f1f3f4;
   color: #000;
   font-size: 14px;
-  display: inline-block;
+  display: flex;
+  width: fit-content;
   margin-bottom: 2rem;
   @media (min-width: 1200px) {
     font-size: 16px;
     padding: 10px 17px;
+  }
+`;
+
+export const TitleCover2 = styled(motion.h1)`
+  padding: 4px 10px;
+  border-radius: 20px;
+  background-color: #f1f3f4;
+  color: #000;
+  font-size: 10px;
+  display: flex;
+  width: fit-content;
+  margin-bottom: 2rem;
+  @media (min-width: 1200px) {
+    font-size: 12px;
+    padding: 5px 12px;
   }
 `;
