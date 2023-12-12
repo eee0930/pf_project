@@ -21,7 +21,7 @@ const BackgroundWrapper = styled(motion.div)`
 const BackVariant = {
   initial: (isNext: boolean) => {
     return {
-      x: isNext ? '-100%' : '100%',
+      x: isNext ? '100%' : '-100%',
     };
   },
   animate: {
@@ -33,7 +33,7 @@ const BackVariant = {
   },
   exit: (isNext: boolean) => {
     return {
-      x: isNext ? '100%' : '-100%',
+      x: isNext ? '-100%' : '100%',
     };
   },
 };

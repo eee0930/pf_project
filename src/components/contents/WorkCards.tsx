@@ -41,22 +41,23 @@ const Title = styled.div`
 const slideVariants = {
   initial: (isNext: boolean) => {
     return {
-      x: isNext ? 0 : -500,
+      x: isNext ? 0 : 500,
       transform: 'translateY(-50%)',
     };
   },
   animate: {
     x: 0,
-    transform: 'translate(-50%,-50%)',
+    transform: 'translate(-50%, -50%)',
     transition: {
       type: 'spring',
-      delay: 0.1,
+      bounce: 0.2,
+      delay: 0,
       duration: 1,
     },
   },
   exit: (isNext: boolean) => {
     return {
-      x: isNext ? -500 : 0,
+      x: isNext ? 500 : 0,
       transform: 'translateY(-50%)',
     };
   },
