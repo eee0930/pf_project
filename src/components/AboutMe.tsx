@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { styled } from 'styled-components';
 import { TitleCover } from '../assets/globalStyles';
 import { introduction } from '../assets/ment';
+import { introSvgs } from '../assets/svgs';
 
 const AboutMeSection = styled(motion.div)`
   position: fixed;
@@ -56,6 +57,7 @@ const AboutMeContainer = styled.div`
 const ImageSection = styled(motion.div)`
   text-align: center;
   align-self: center;
+  position: relative;
   img {
     border-radius: 50%;
     width: 90%;
@@ -94,6 +96,72 @@ const Introduction = styled(motion.div)`
   }
   @media (min-width: 1200px) {
     margin-right: 5rem;
+  }
+`;
+
+const Shapes = styled.div`
+  position: absolute;
+  animation-name: ship;
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards, forwards;
+  &:nth-child(1) {
+    animation-delay: calc(0.12s * 1), calc(0.12s * 1 + 0.36s);
+  }
+  &:nth-child(2) {
+    animation-delay: calc(0.12s * 2), calc(0.12s * 2 + 0.36s);
+  }
+  &:nth-child(3) {
+    animation-delay: calc(0.12s * 3), calc(0.12s * 3 + 0.36s);
+  }
+  &:nth-child(4) {
+    animation-delay: calc(0.12s * 4), calc(0.12s * 4 + 0.36s);
+  }
+  &.shape0 {
+    top: 85%;
+    left: -10%;
+  }
+  &.shape1 {
+    top: 80%;
+    right: 0;
+  }
+  &.shape2 {
+    bottom: 70%;
+    left: -5%;
+  }
+  &.shape3 {
+    bottom: 90%;
+    right: 0;
+  }
+  @media (min-width: 1200px) {
+    &.shape0 {
+      top: 85%;
+      left: 15%;
+    }
+    &.shape1 {
+      top: 80%;
+      right: 15%;
+    }
+    &.shape2 {
+      bottom: 70%;
+      left: 5%;
+    }
+    &.shape3 {
+      bottom: 90%;
+      right: 10%;
+    }
+  }
+  svg {
+    display: none;
+    @media (min-width: 768px) {
+      display: block;
+      transform: scale(0.5);
+    }
+    @media (min-width: 1200px) {
+      display: block;
+      transform: scale(0.7);
+    }
   }
 `;
 
@@ -187,6 +255,13 @@ export default function AboutMe({ callback }: IAboutMe) {
                 src={`${process.env.PUBLIC_URL}/img/coding_hard.png`}
                 alt="about me"
               />
+              {introSvgs.map((svg, i) => (
+                <Shapes
+                  className={`shape${i}`}
+                  key={i}
+                  dangerouslySetInnerHTML={{ __html: svg }}
+                />
+              ))}
             </ImageSection>
             <AboutSection className="col-12 col-md-7">
               <TitleCover

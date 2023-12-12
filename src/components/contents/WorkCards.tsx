@@ -2,7 +2,7 @@ import { styled } from 'styled-components';
 import { Card, BackCard } from './Card';
 import { AnimatePresence, motion } from 'framer-motion';
 import WorkModal from '../WorkModal';
-import { workList } from '../../assets/works';
+import { workList, workLen } from '../../assets/works';
 import { TitleCover2 } from '../../assets/globalStyles';
 import { backColors } from '../../assets/ment';
 import MoniterImg from './MoniterImg';
@@ -98,8 +98,9 @@ export default function WorkCards({ idx, nextIdx, isNext }: IWorkCards) {
     <>
       <Wrapper>
         <BackCards>
-          <BackCard />
-          <BackCard />
+          {Array.from(Array(workLen - 2), (_, i) => (
+            <BackCard key={i} />
+          ))}
           <BackCard>
             <TitleSection>
               <CardNum style={{ color: backColors[nextIdx] }}>
@@ -110,7 +111,7 @@ export default function WorkCards({ idx, nextIdx, isNext }: IWorkCards) {
               >
                 {name}
               </TitleCover2>
-              {nextWork?.logo ? (
+              {nextWork.logo ? (
                 <LogoSection>
                   <Logo
                     src={`${process.env.PUBLIC_URL}/works/logo/${nextWork.logo}`}
@@ -118,9 +119,9 @@ export default function WorkCards({ idx, nextIdx, isNext }: IWorkCards) {
                   />
                 </LogoSection>
               ) : (
-                <Title>{nextWork?.name}</Title>
+                <Title>{nextWork.name}</Title>
               )}
-              <Eng>{eng}</Eng>
+              <Eng>{nextWork.eng}</Eng>
             </TitleSection>
             <MoniterImg idx={nextIdx} />
           </BackCard>
@@ -129,6 +130,7 @@ export default function WorkCards({ idx, nextIdx, isNext }: IWorkCards) {
           <PointCard
             key={idx}
             custom={isNext}
+            layoutId="work"
             variants={slideVariants}
             initial="initial"
             animate="animate"

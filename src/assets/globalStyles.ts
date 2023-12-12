@@ -91,6 +91,24 @@ export const GlobalStyle = createGlobalStyle`
       transform: rotateZ(360deg);
     }
   }
+  @keyframes ship {
+    0% {
+      -webkit-transform: rotateZ(30deg);
+      transform: rotateZ(30deg);
+    }
+    40% {
+      -webkit-transform: rotateZ(-30deg);
+      transform: rotateZ(-30deg);
+    }
+    75% {
+      -webkit-transform: rotateZ(30deg);
+      transform: rotateZ(40deg);
+    }
+    100% {
+      -webkit-transform: rotateZ(30deg);
+      transform: rotateZ(30deg);
+    }
+  }
 `;
 
 export const BasicStyle = createGlobalStyle`

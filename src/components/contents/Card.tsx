@@ -45,7 +45,6 @@ export function Card({ children, callback }: ICard) {
   return (
     <CardCover
       onClick={callback}
-      layoutId="work"
       variants={hoverVariant}
       initial="initial"
       whileHover="hover"
@@ -55,7 +54,7 @@ export function Card({ children, callback }: ICard) {
   );
 }
 
-const BackCardCover = styled.div`
+const BackCardCover = styled(motion.div)`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -68,15 +67,15 @@ const BackCardCover = styled.div`
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   overflow: hidden;
-  &:nth-child(1) {
+  &:nth-child(3n) {
     transform: translate(-50%, -50%) rotateZ(9deg) perspective(300px);
   }
-  &:nth-child(2) {
+  &:nth-child(3n + 1) {
     transform: translate(-50%, -50%) rotateZ(6deg) perspective(300px);
   }
-  &:nth-child(3) {
+  &:nth-child(3n + 2) {
     transform: translate(-50%, -50%) rotateZ(3deg) perspective(300px);
   }
   @media (min-width: 1200px) {

@@ -72,7 +72,7 @@ const ContactMeSection = styled.div`
   padding: 0 1rem;
   color: rgba(0, 0, 0, 0.35);
   align-self: center;
-  span {
+  a {
     &:hover {
       color: rgba(255, 255, 255, 1);
     }
