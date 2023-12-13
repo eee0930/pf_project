@@ -14,7 +14,7 @@ import MoniterImg from './MoniterImg';
 import { backColors } from '../../assets/ment';
 import { useState } from 'react';
 import WorkModal from '../WorkModal';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const DisplayCardsWrapper = styled.div`
   width: 100%;
@@ -31,6 +31,7 @@ const DisplayCardsWrapper = styled.div`
     max-width: 1000px;
   }
 `;
+const CardGrid = styled(motion.div)``;
 const CardWrapper = styled(motion.div)`
   display: flex;
   width: fit-content;
@@ -40,47 +41,45 @@ const CardWrapper = styled(motion.div)`
 
 export default function DisplayCards() {
   const [modalOpen, setModalOpen] = useState(false);
+  const [nowIdx, setNowIdx] = useState(0);
   const openModal = (idx: number) => {
     setNowIdx(idx);
     setModalOpen(true);
   };
   const callback = () => setModalOpen(false);
-  const [nowIdx, setNowIdx] = useState(0);
   return (
     <>
-      <AnimatePresence>
-        <DisplayCardsWrapper className="row">
-          {workList.map((work, i) => (
-            <motion.div className="col-12 col-md-6 col-lg-4" key={work.id}>
-              <CardWrapper>
-                <DisplayCard idx={i} callback={() => openModal(i)}>
-                  <TitleSection>
-                    <CardNum style={{ color: backColors[i] }}>{i + 1}</CardNum>
-                    <TitleCover2
-                      style={{ backgroundColor: backColors[i], color: '#fff' }}
-                    >
-                      {work.name}
-                    </TitleCover2>
-                    {work.logo ? (
-                      <LogoSection>
-                        <Logo
-                          src={`${process.env.PUBLIC_URL}/works/logo/${work.logo}`}
-                          alt="logo"
-                        />
-                      </LogoSection>
-                    ) : (
-                      <Title>{work.name}</Title>
-                    )}
-                    <Eng>{work.eng}</Eng>
-                  </TitleSection>
-                  <MoniterImg idx={i} />
-                </DisplayCard>
-              </CardWrapper>
-            </motion.div>
-          ))}
-        </DisplayCardsWrapper>
-        {modalOpen && <WorkModal idx={nowIdx} callback={callback} />}
-      </AnimatePresence>
+      <DisplayCardsWrapper className="row">
+        {workList.map((work, i) => (
+          <CardGrid className="col-12 col-md-6 col-lg-4" key={work.id}>
+            <CardWrapper>
+              <DisplayCard idx={i} callback={() => openModal(i)}>
+                <TitleSection>
+                  <CardNum style={{ color: backColors[i] }}>{i + 1}</CardNum>
+                  <TitleCover2
+                    style={{ backgroundColor: backColors[i], color: '#fff' }}
+                  >
+                    {work.name}
+                  </TitleCover2>
+                  {work.logo ? (
+                    <LogoSection>
+                      <Logo
+                        src={`${process.env.PUBLIC_URL}/works/logo/${work.logo}`}
+                        alt="logo"
+                      />
+                    </LogoSection>
+                  ) : (
+                    <Title>{work.name}</Title>
+                  )}
+                  <Eng>{work.eng}</Eng>
+                </TitleSection>
+                <MoniterImg idx={i} />
+              </DisplayCard>
+            </CardWrapper>
+          </CardGrid>
+        ))}
+      </DisplayCardsWrapper>
+      {modalOpen && <WorkModal idx={nowIdx} callback={callback} />}
     </>
   );
 }
