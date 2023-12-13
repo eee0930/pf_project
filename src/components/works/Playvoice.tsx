@@ -22,11 +22,14 @@ const DefaultTitleSection = styled.div`
     color: #fff;
     border-radius: 2px;
     margin-right: 5px;
-    font-size: 14px;
+    font-size: 13px;
   }
   @media (min-width: 1200px) {
     margin-bottom: 5rem;
     font-size: 16px;
+    label {
+      font-size: 14px;
+    }
   }
 `;
 const ContentSection = styled.div`

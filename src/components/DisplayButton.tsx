@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useState } from 'react';
 import styled from 'styled-components';
 
@@ -16,7 +16,7 @@ const ButtonWrapper = styled.div`
   flex-wrap: wrap;
   position: relative;
 `;
-const Switch = styled(motion.div)`
+const Switch = styled.div`
   display: inline-flex;
   position: absolute;
   top: 4px;
@@ -26,24 +26,43 @@ const Switch = styled(motion.div)`
   width: 40px;
   height: 40px;
   border-radius: 40px;
-  background-color: #000;
   color: #fff;
   flex-wrap: wrap;
   > span > span {
     background: #fff;
   }
   &.active {
-    background-color: #fff;
     > span > span {
       background: #000;
     }
   }
 `;
 const Switch2 = styled(Switch)`
-  left: unset;
-  right: 4px;
+  left: 44px;
+`;
+const Active = styled(motion.div)`
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  z-index: 0;
+`;
+const ModeCover = styled.span`
+  position: relative;
+`;
+const ModeIcon = styled.span`
+  border-radius: 2px;
+  display: inline-block;
+  height: 16px;
+  width: 12px;
 `;
 const DotCover = styled.span`
+  position: relative;
   column-gap: 3px;
   display: -webkit-box;
   display: flex;
@@ -52,16 +71,8 @@ const DotCover = styled.span`
   row-gap: 3px;
   width: 15px;
 `;
-const ModeIcon = styled.span`
-  background: #000;
-  border-radius: 2px;
-  display: inline-block;
-  height: 16px;
-  width: 12px;
-`;
 const DotIcon = styled.span`
-  background: #fff;
-  border-radius: 50%;
+  border-radius: 20%;
   display: block;
   height: 6px;
   width: 6px;
@@ -82,29 +93,27 @@ export default function DisplayButton({
   };
   return (
     <ButtonWrapper>
-      <AnimatePresence>
-        <Switch
-          layoutId="switch"
-          onClick={() => handleClickSwitch(true)}
-          className={`${leftActive ? 'active' : ''}`}
-        >
-          <span>
-            <ModeIcon />
-          </span>
-        </Switch>
-        <Switch2
-          layoutId="switch"
-          onClick={() => handleClickSwitch(false)}
-          className={`${leftActive ? '' : 'active'}`}
-        >
-          <DotCover>
-            <DotIcon />
-            <DotIcon />
-            <DotIcon />
-            <DotIcon />
-          </DotCover>
-        </Switch2>
-      </AnimatePresence>
+      <Switch
+        onClick={() => handleClickSwitch(true)}
+        className={`${leftActive ? 'active' : ''}`}
+      >
+        {leftActive && <Active layoutId="switch" />}
+        <ModeCover>
+          <ModeIcon />
+        </ModeCover>
+      </Switch>
+      <Switch2
+        onClick={() => handleClickSwitch(false)}
+        className={`${leftActive ? '' : 'active'}`}
+      >
+        {!leftActive && <Active layoutId="switch" />}
+        <DotCover>
+          <DotIcon />
+          <DotIcon />
+          <DotIcon />
+          <DotIcon />
+        </DotCover>
+      </Switch2>
     </ButtonWrapper>
   );
 }

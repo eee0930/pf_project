@@ -120,19 +120,19 @@ const Shapes = styled.div`
   }
   &.shape0 {
     top: 85%;
-    left: -10%;
+    left: 0%;
   }
   &.shape1 {
     top: 80%;
-    right: 0;
+    right: 5%;
   }
   &.shape2 {
     bottom: 70%;
-    left: -5%;
+    left: 4%;
   }
   &.shape3 {
     bottom: 90%;
-    right: 0;
+    right: 10%;
   }
   @media (min-width: 1200px) {
     &.shape0 {
@@ -156,11 +156,13 @@ const Shapes = styled.div`
     display: none;
     @media (min-width: 768px) {
       display: block;
-      transform: scale(0.5);
+      width: 70px;
+      height: 70px;
     }
     @media (min-width: 1200px) {
       display: block;
-      transform: scale(0.7);
+      width: 80px;
+      height: 80px;
     }
   }
 `;

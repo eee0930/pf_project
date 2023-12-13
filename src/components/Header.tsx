@@ -1,8 +1,9 @@
 import styled from 'styled-components';
-import { gitSvg } from '../assets/svgs';
+import { gitSvg, introSvgs } from '../assets/svgs';
 import { email, gitUrl } from '../assets/ment';
 import { useState } from 'react';
 import AboutMe from './AboutMe';
+import ContactMe from './ContactMe';
 
 const PortfolioHeader = styled.header`
   padding: 1rem 0;
@@ -26,18 +27,20 @@ const AboutMeSection = styled.div`
   display: flex;
   align-items: center;
   padding: 0 1rem;
-  color: rgba(0, 0, 0, 0.35);
+  color: rgba(0, 0, 0, 0.5);
   align-self: center;
   svg {
-    fill: rgba(0, 0, 0, 0.35);
+    fill: rgba(0, 0, 0, 0.5);
     width: 30px;
     height: 30px;
+    transition: color 0.3s ease;
     &:hover {
       fill: rgba(255, 255, 255, 1);
     }
   }
   span {
-    margin-right: 1rem;
+    margin-right: 0.5rem;
+    transition: color 0.3s ease;
     &:hover {
       color: rgba(255, 255, 255, 1);
     }
@@ -54,8 +57,9 @@ const AboutMeBtn = styled.button`
   background-color: transparent;
   padding: 3px 3px;
   font-size: 1rem;
-  color: rgba(0, 0, 0, 0.35);
+  color: rgba(0, 0, 0, 0.5);
   font-weight: 600;
+  transition: color 0.3s ease;
   &:hover {
     color: rgba(255, 255, 255, 1);
   }
@@ -70,7 +74,7 @@ const AboutMeBtn = styled.button`
 const ContactMeSection = styled.div`
   text-align: right;
   padding: 0 1rem;
-  color: rgba(0, 0, 0, 0.35);
+  color: rgba(0, 0, 0, 0.5);
   align-self: center;
   a {
     &:hover {
@@ -88,6 +92,7 @@ const ContactMeSection = styled.div`
 const IconSection = styled.div`
   padding: 0 1rem;
   align-self: center;
+  text-align: center;
   @media (min-width: 768px) {
     padding: 0 2rem;
   }
@@ -95,9 +100,41 @@ const IconSection = styled.div`
     padding: 0 4rem;
   }
 `;
+const Shapes = styled.span`
+  position: absolute;
+  top: -15px;
+  svg {
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+  }
+  animation-name: ship;
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards, forwards;
+  &:nth-child(1) {
+    left: calc(50% - 60px - 15px);
+    animation-delay: calc(0.12s * 1), calc(0.12s * 1 + 0.36s);
+  }
+  &:nth-child(2) {
+    left: calc(50% - 20px - 15px);
+    animation-delay: calc(0.12s * 2), calc(0.12s * 2 + 0.36s);
+  }
+  &:nth-child(3) {
+    left: calc(50% + 20px - 15px);
+    animation-delay: calc(0.12s * 3), calc(0.12s * 3 + 0.36s);
+  }
+  &:nth-child(4) {
+    left: calc(50% + 60px - 15px);
+    animation-delay: calc(0.12s * 4), calc(0.12s * 4 + 0.36s);
+  }
+`;
 export default function Header() {
   const [openAboutMe, setOpenAboutMe] = useState(false);
-  const closeModal = () => setOpenAboutMe(false);
+  const [openContactMe, setOpenContactMe] = useState(false);
+  const closeAboutMeModal = () => setOpenAboutMe(false);
+  const closeContactMeModal = () => setOpenContactMe(false);
   return (
     <>
       <PortfolioHeader className="row">
@@ -116,12 +153,23 @@ export default function Header() {
             />
           </span>
         </AboutMeSection>
-        <IconSection className="d-none d-md-inline-block col-md-6"></IconSection>
+        <IconSection className="d-none d-md-inline-block col-md-6">
+          {introSvgs.map((svg, i) => (
+            <Shapes
+              className={`shape${i}`}
+              key={i}
+              dangerouslySetInnerHTML={{ __html: svg }}
+            />
+          ))}
+        </IconSection>
         <ContactMeSection className="col-6 col-md-3">
-          <a href={`mailto:${email}`}>Contact</a>
+          <AboutMeBtn onClick={() => setOpenContactMe(true)}>
+            Contact
+          </AboutMeBtn>
         </ContactMeSection>
       </PortfolioHeader>
-      {openAboutMe && <AboutMe callback={closeModal} />}
+      {openAboutMe && <AboutMe callback={closeAboutMeModal} />}
+      {openContactMe && <ContactMe callback={closeContactMeModal} />}
     </>
   );
 }

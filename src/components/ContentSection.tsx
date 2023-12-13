@@ -30,13 +30,17 @@ const Button = styled.button`
   top: -1rem;
   height: 45px;
   border: none;
-  color: #fff;
+  color: rgba(0, 0, 0, 0.5);
   padding: 5px 15px;
   background-color: transparent;
   font-size: 2.5rem;
   text-align: center;
   cursor: pointer;
   z-index: 5;
+  transition: color 0.3s ease;
+  &:hover {
+    color: rgba(255, 255, 255, 1);
+  }
 `;
 const PrevButton = styled(Button)`
   left: 3rem;
@@ -70,6 +74,7 @@ const DisplayButtonWrapper = styled.div`
   transform: translateX(-50%);
   padding: 1rem 0;
 `;
+
 export default function ContentSection() {
   const [idx, setIdx] = useState(0);
   const [nextIdx, setNextIdx] = useState(1);
@@ -102,12 +107,14 @@ export default function ContentSection() {
         <BackDivide idx={idx} prevIdx={prevIdx} isNext={isNext} />
       </AbsoluteWrapper>
       <AbsoluteWrapper>
-        <NextButtonSection>
-          <PrevButton onClick={() => getNextIdx(false)}>prev</PrevButton>
-          <NextButton onClick={() => getNextIdx(true)}>next</NextButton>
-        </NextButtonSection>
         {isGather ? (
-          <WorkCards idx={idx} nextIdx={nextIdx} isNext={isNext} />
+          <>
+            <NextButtonSection>
+              <PrevButton onClick={() => getNextIdx(false)}>prev</PrevButton>
+              <NextButton onClick={() => getNextIdx(true)}>next</NextButton>
+            </NextButtonSection>
+            <WorkCards idx={idx} nextIdx={nextIdx} isNext={isNext} />
+          </>
         ) : (
           <DisplayCards />
         )}

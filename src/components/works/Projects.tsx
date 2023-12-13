@@ -25,12 +25,12 @@ const DefaultTitleSection = styled.div`
     color: #fff;
     border-radius: 2px;
     margin-right: 5px;
-    font-size: 14px;
+    font-size: 13px;
   }
   @media (min-width: 1200px) {
     font-size: 16px;
     label {
-      font-size: 15px;
+      font-size: 14px;
     }
   }
 `;

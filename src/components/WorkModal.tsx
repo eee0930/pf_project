@@ -31,11 +31,12 @@ const ModalWrapper = styled(motion.div)`
   border-radius: 2rem;
   z-index: 1005;
   padding: 2rem;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
   @media (min-width: 768px) {
     padding: 4rem;
   }
   @media (min-width: 991px) {
-    padding: 5rem;
+    padding: 6rem;
   }
   @media (min-width: 1200px) {
     padding: 10rem;
