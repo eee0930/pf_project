@@ -3,6 +3,8 @@ import BackDivide from './contents/BackDivide';
 import WorkCards from './contents/WorkCards';
 import { useEffect, useState } from 'react';
 import { workLen } from '../assets/works';
+import DisplayButton from './DisplayButton';
+import DisplayCards from './contents/DisplayCards';
 
 const ContentContainer = styled.div`
   min-height: 100vh;
@@ -41,8 +43,11 @@ const PrevButton = styled(Button)`
   @media (min-width: 768px) {
     left: 7rem;
   }
+  @media (min-width: 991px) {
+    left: 9rem;
+  }
   @media (min-width: 1200px) {
-    left: 15rem;
+    left: 18rem;
   }
 `;
 const NextButton = styled(Button)`
@@ -50,15 +55,27 @@ const NextButton = styled(Button)`
   @media (min-width: 768px) {
     right: 7rem;
   }
-  @media (min-width: 1200px) {
-    right: 15rem;
+  @media (min-width: 991px) {
+    right: 9rem;
   }
+  @media (min-width: 1200px) {
+    right: 18rem;
+  }
+`;
+
+const DisplayButtonWrapper = styled.div`
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 1rem 0;
 `;
 export default function ContentSection() {
   const [idx, setIdx] = useState(0);
   const [nextIdx, setNextIdx] = useState(1);
   const [prevIdx, setPrevIdx] = useState(workLen - 1);
   const [isNext, setIsNext] = useState(true);
+  const [isGather, setIsGather] = useState(true);
   const getNextIdx = (isNext: boolean) => {
     if (isNext) {
       setIsNext(true);
@@ -89,8 +106,18 @@ export default function ContentSection() {
           <PrevButton onClick={() => getNextIdx(false)}>prev</PrevButton>
           <NextButton onClick={() => getNextIdx(true)}>next</NextButton>
         </NextButtonSection>
-        <WorkCards idx={idx} nextIdx={nextIdx} isNext={isNext} />
+        {isGather ? (
+          <WorkCards idx={idx} nextIdx={nextIdx} isNext={isNext} />
+        ) : (
+          <DisplayCards />
+        )}
       </AbsoluteWrapper>
+      <DisplayButtonWrapper>
+        <DisplayButton
+          handleOpen={() => setIsGather(false)}
+          handleGather={() => setIsGather(true)}
+        />
+      </DisplayButtonWrapper>
     </ContentContainer>
   );
 }

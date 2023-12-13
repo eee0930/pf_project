@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import React from 'react';
 import { styled } from 'styled-components';
 
@@ -69,13 +69,13 @@ const BackCardCover = styled(motion.div)`
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
-  &:nth-child(3n) {
+  &:nth-child(3n + 2) {
     transform: translate(-50%, -50%) rotateZ(9deg) perspective(300px);
   }
-  &:nth-child(3n + 1) {
+  &:nth-child(3n) {
     transform: translate(-50%, -50%) rotateZ(6deg) perspective(300px);
   }
-  &:nth-child(3n + 2) {
+  &:nth-child(3n + 1) {
     transform: translate(-50%, -50%) rotateZ(3deg) perspective(300px);
   }
   @media (min-width: 1200px) {
@@ -88,4 +88,20 @@ interface IBackCard {
 }
 export function BackCard({ children }: IBackCard) {
   return <BackCardCover>{children}</BackCardCover>;
+}
+
+interface IEmptyCard {
+  idx: number;
+}
+export function EmptyCard({ idx }: IEmptyCard) {
+  return (
+    <AnimatePresence>
+      <BackCardCover>
+        <motion.div
+          layoutId={`workCard${idx}`}
+          style={{ width: '100%', height: '100%', backgroundColor: 'white' }}
+        />
+      </BackCardCover>
+    </AnimatePresence>
+  );
 }

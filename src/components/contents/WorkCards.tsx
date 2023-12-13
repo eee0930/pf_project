@@ -1,5 +1,5 @@
 import { styled } from 'styled-components';
-import { Card, BackCard } from './Card';
+import { Card, BackCard, EmptyCard } from './Card';
 import { AnimatePresence, motion } from 'framer-motion';
 import WorkModal from '../WorkModal';
 import { workList, workLen } from '../../assets/works';
@@ -98,8 +98,8 @@ export default function WorkCards({ idx, nextIdx, isNext }: IWorkCards) {
     <>
       <Wrapper>
         <BackCards>
-          {Array.from(Array(workLen - 2), (_, i) => (
-            <BackCard key={i} />
+          {Array.from(Array(workLen), (_, i) => (
+            <EmptyCard idx={i} key={i} />
           ))}
           <BackCard>
             <TitleSection>

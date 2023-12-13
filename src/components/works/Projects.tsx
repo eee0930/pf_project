@@ -38,6 +38,7 @@ const ContentSection = styled.div`
   margin-top: 5rem;
   line-height: 1.2;
   img {
+    width: 100%;
     max-width: 300px;
     margin: 0 auto 0.5rem;
   }
@@ -49,6 +50,9 @@ const ContentSection = styled.div`
   }
   @media (min-width: 1200px) {
     margin-top: 5rem;
+    img {
+      max-width: 700px;
+    }
   }
 `;
 const Title = styled.div`
@@ -78,6 +82,9 @@ const Number = styled.span`
   font-size: 18px;
   font-weight: 600;
   color: ${(props) => props.theme.main2};
+  @media (min-width: 1200px) {
+    font-size: 20px;
+  }
 `;
 export default function Projects({ idx }: IProject) {
   const work = workInfo[idx];

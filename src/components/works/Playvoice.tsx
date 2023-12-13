@@ -33,11 +33,21 @@ const ContentSection = styled.div`
   margin-top: 5rem;
   line-height: 1.5;
   img {
-    max-width: 500px;
-    margin-bottom: 0.5rem;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto 0.5rem;
+  }
+  @media (min-width: 768px) {
+    img {
+      max-width: 500px;
+      margin: 0.5rem 0 0;
+    }
   }
   @media (min-width: 1200px) {
-    font-size: 16px;
+    margin-top: 5rem;
+    img {
+      max-width: 700px;
+    }
   }
 `;
 const Title = styled.div`

@@ -26,7 +26,7 @@ const ModalWrapper = styled(motion.div)`
   position: relative;
   width: calc(100vw - 15%);
   min-height: calc(100vh - 2rem);
-  margin: 5rem auto 1rem;
+  margin: 5rem auto;
   background-color: #fff;
   border-radius: 2rem;
   z-index: 1005;
@@ -34,8 +34,11 @@ const ModalWrapper = styled(motion.div)`
   @media (min-width: 768px) {
     padding: 4rem;
   }
+  @media (min-width: 991px) {
+    padding: 5rem;
+  }
   @media (min-width: 1200px) {
-    padding: 8rem;
+    padding: 10rem;
   }
 `;
 const CloseButton = styled.button`
@@ -122,10 +125,6 @@ const widthVariant = {
   animate: {
     width: 'calc(100vw - 15%)',
     height: 'auto',
-    transition: {
-      delay: 0.1,
-      duration: 0.3,
-    },
   },
 };
 const fadeVariant = {
@@ -136,10 +135,6 @@ const fadeVariant = {
   animate: {
     opacity: 1,
     scale: 1,
-    transition: {
-      delay: 0.1,
-      duration: 0.3,
-    },
   },
 };
 interface IWorkModal {
@@ -159,12 +154,14 @@ export default function WorkModal({ idx, callback }: IWorkModal) {
         initial="initial"
         animate="animate"
         layoutId="work"
+        transition={{ delay: 0.1, duration: 0.5 }}
       >
         <CloseButton onClick={callback}>&times;</CloseButton>
         <ModalContentSection
           variants={fadeVariant}
           initial="initial"
           animate="animate"
+          transition={{ delay: 0.2, duration: 0.7 }}
         >
           <DefaultInfoSection className="row">
             <div className="col-12 col-md-6">
