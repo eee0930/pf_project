@@ -3,7 +3,7 @@ import { backColors } from '../../assets/ment';
 import { AnimatePresence, motion } from 'framer-motion';
 
 const BackgroundContainer = styled.div`
-  height: 100vh;
+  height: 100%;
   width: 100%;
   overflow: hidden;
   position: relative;

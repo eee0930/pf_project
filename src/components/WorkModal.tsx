@@ -15,12 +15,13 @@ const ModalContainer = styled.div`
   z-index: 1000;
   overflow-y: auto;
 `;
-const BackgroundContainer = styled.div`
+const BackgroundContainer = styled(motion.div)`
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+  transition: background-color 0.3s ease;
 `;
 const ModalWrapper = styled(motion.div)`
   position: relative;
@@ -138,6 +139,18 @@ const fadeVariant = {
     scale: 1,
   },
 };
+const backgroundVariant = {
+  initial: {
+    opacity: 0,
+  },
+  animate: {
+    opacity: 1,
+    transition: {
+      delay: 0.2,
+      duration: 0.4,
+    },
+  },
+};
 interface IWorkModal {
   idx: number;
   callback: () => void;
@@ -147,6 +160,9 @@ export default function WorkModal({ idx, callback }: IWorkModal) {
   return (
     <ModalContainer>
       <BackgroundContainer
+        variants={backgroundVariant}
+        initial="initial"
+        animate="animate"
         style={{ backgroundColor: backColors[idx] }}
         onClick={callback}
       ></BackgroundContainer>

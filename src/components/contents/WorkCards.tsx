@@ -7,6 +7,14 @@ import { TitleCover2 } from '../../assets/globalStyles';
 import { backColors } from '../../assets/ment';
 import MoniterImg from './MoniterImg';
 import { useState } from 'react';
+import {
+  CardNum,
+  Eng,
+  Logo,
+  LogoSection,
+  Title,
+  TitleSection,
+} from '../../assets/cardStyles';
 
 const Wrapper = styled.div`
   display: flex;
@@ -27,42 +35,6 @@ const PointCard = styled(motion.div)`
   @media (min-width: 1200px) {
     top: calc(50% - 250px);
     left: calc(50% - 150px);
-  }
-`;
-const TitleSection = styled.div`
-  position: relative;
-`;
-const CardNum = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  font-size: 2rem;
-  font-weight: 600;
-  transform: rotateZ(3deg);
-`;
-const LogoSection = styled.div`
-  width: 100%;
-  text-align: center;
-`;
-const Logo = styled.img`
-  height: 80px;
-  margin: 0 auto 1rem;
-  @media (min-width: 1200px) {
-    height: 100px;
-  }
-`;
-const Title = styled.div`
-  font-size: 1.8rem;
-  font-weight: 600;
-  letter-spacing: -0.03em;
-  margin-bottom: 2rem;
-`;
-const Eng = styled.div`
-  font-size: 16px;
-  line-height: 1.5;
-  letter-spacing: -0.02em;
-  @media (min-width: 1200px) {
-    font-size: 18px;
   }
 `;
 

@@ -95,13 +95,42 @@ interface IEmptyCard {
 }
 export function EmptyCard({ idx }: IEmptyCard) {
   return (
-    <AnimatePresence>
-      <BackCardCover>
-        <motion.div
-          layoutId={`workCard${idx}`}
-          style={{ width: '100%', height: '100%', backgroundColor: 'white' }}
-        />
-      </BackCardCover>
-    </AnimatePresence>
+    <BackCardCover>
+      <motion.div
+        layoutId={`workCard${idx}`}
+        style={{ width: '100%', height: '100%', backgroundColor: 'white' }}
+      />
+    </BackCardCover>
+  );
+}
+
+interface IDisplayCard {
+  idx: number;
+  children: React.ReactNode;
+  callback: () => void;
+}
+
+const cardBigVariant = {
+  initial: {
+    scale: 1,
+  },
+  hover: {
+    scale: 1.02,
+    transition: {
+      duration: 0.3,
+    },
+  },
+};
+export function DisplayCard({ idx, children, callback }: IDisplayCard) {
+  return (
+    <CardCover
+      layoutId={`workCard${idx}`}
+      onClick={callback}
+      variants={cardBigVariant}
+      initial="initial"
+      whileHover="hover"
+    >
+      {children}
+    </CardCover>
   );
 }

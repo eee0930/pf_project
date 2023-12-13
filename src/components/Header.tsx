@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { gitSvg, introSvgs } from '../assets/svgs';
-import { email, gitUrl } from '../assets/ment';
+import { gitUrl } from '../assets/ment';
 import { useState } from 'react';
 import AboutMe from './AboutMe';
 import ContactMe from './ContactMe';

@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { workLen } from '../assets/works';
 import DisplayButton from './DisplayButton';
 import DisplayCards from './contents/DisplayCards';
+import { backColors } from '../assets/ment';
 
 const ContentContainer = styled.div`
   min-height: 100vh;
@@ -17,7 +18,13 @@ const AbsoluteWrapper = styled.div`
   right: 0;
   bottom: 0;
 `;
-
+const NowBack = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+`;
 const NextButtonSection = styled.div`
   position: absolute;
   top: 50%;
@@ -68,7 +75,7 @@ const NextButton = styled(Button)`
 `;
 
 const DisplayButtonWrapper = styled.div`
-  position: absolute;
+  position: fixed;
   bottom: 1rem;
   left: 50%;
   transform: translateX(-50%);
@@ -106,6 +113,7 @@ export default function ContentSection() {
       <AbsoluteWrapper>
         <BackDivide idx={idx} prevIdx={prevIdx} isNext={isNext} />
       </AbsoluteWrapper>
+      {!isGather && <NowBack style={{ backgroundColor: backColors[idx] }} />}
       <AbsoluteWrapper>
         {isGather ? (
           <>
