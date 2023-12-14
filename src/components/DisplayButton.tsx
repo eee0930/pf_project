@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import styled from 'styled-components';
 
 interface IDisplayButton {
@@ -82,7 +82,7 @@ export default function DisplayButton({
   handleGather,
 }: IDisplayButton) {
   const [leftActive, setLeftActive] = useState(true);
-  const handleClickSwitch = (isLeft: boolean) => {
+  const handleClickSwitch = useCallback((isLeft: boolean) => {
     if (isLeft) {
       setLeftActive(true);
       handleGather();
@@ -90,7 +90,7 @@ export default function DisplayButton({
       setLeftActive(false);
       handleOpen();
     }
-  };
+  }, []);
   return (
     <ButtonWrapper>
       <Switch

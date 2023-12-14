@@ -6,7 +6,7 @@ import { workList, workLen } from '../../assets/works';
 import { TitleCover2 } from '../../assets/globalStyles';
 import { backColors } from '../../assets/ment';
 import MoniterImg from './MoniterImg';
-import { useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import {
   CardNum,
   Eng,
@@ -16,7 +16,7 @@ import {
   TitleSection,
 } from '../../assets/cardStyles';
 
-const Wrapper = styled.div`
+const Wrapper = styled(motion.div)`
   display: flex;
   position: relative;
   width: 100%;
@@ -42,10 +42,12 @@ const slideVariants = {
   initial: (isNext: boolean) => {
     return {
       x: isNext ? 0 : -100,
+      rotate: isNext ? '3deg' : 0,
     };
   },
   animate: {
     x: 0,
+    rotate: 0,
   },
   exit: (isNext: boolean) => {
     return {
@@ -58,17 +60,43 @@ interface IWorkCards {
   idx: number;
   nextIdx: number;
   isNext: boolean;
+  callBackNext: (isNext: boolean) => void;
 }
 
-export default function WorkCards({ idx, nextIdx, isNext }: IWorkCards) {
+const swipeConfidenceThreshold = 10000;
+const swipePower = (offset: number, velocity: number) => {
+  return Math.abs(offset) * velocity;
+};
+
+export default function WorkCards({
+  idx,
+  nextIdx,
+  isNext,
+  callBackNext,
+}: IWorkCards) {
   const [modalOpen, setModalOpen] = useState(false);
-  const openModal = () => setModalOpen(true);
-  const callback = () => setModalOpen(false);
-  const { name, eng } = workList[idx];
-  const nextWork = workList[nextIdx];
+  const { name, eng } = useMemo(() => workList[idx], [idx]);
+  const nextWork = useMemo(() => workList[nextIdx], [nextIdx]);
+
+  const handleDragEnd = useCallback((swipe: number) => {
+    if (swipe < -swipeConfidenceThreshold) {
+      callBackNext(true);
+    } else if (swipe > swipeConfidenceThreshold) {
+      callBackNext(false);
+    }
+  }, []);
+
   return (
     <>
-      <Wrapper>
+      <Wrapper
+        drag="x"
+        dragConstraints={{ left: 1, right: 1 }}
+        dragElastic={1}
+        onDragEnd={(e, { offset, velocity }) => {
+          const swipe = swipePower(offset.x, velocity.x);
+          handleDragEnd(swipe);
+        }}
+      >
         <BackCards>
           {Array.from(Array(workLen), (_, i) => (
             <EmptyCard idx={i} key={i} />
@@ -109,7 +137,7 @@ export default function WorkCards({ idx, nextIdx, isNext }: IWorkCards) {
             exit="exit"
             transition={{ duration: 0.3 }}
           >
-            <Card callback={openModal}>
+            <Card callback={() => setModalOpen(true)}>
               <TitleSection>
                 <CardNum style={{ color: backColors[idx] }}>{idx + 1}</CardNum>
                 <TitleCover2
@@ -134,7 +162,9 @@ export default function WorkCards({ idx, nextIdx, isNext }: IWorkCards) {
           </PointCard>
         </AnimatePresence>
       </Wrapper>
-      {modalOpen && <WorkModal idx={idx} callback={callback} />}
+      {modalOpen && (
+        <WorkModal idx={idx} callback={() => setModalOpen(false)} />
+      )}
     </>
   );
 }

@@ -6,6 +6,7 @@ import { workList } from '../assets/works';
 import MoniterImg from './contents/MoniterImg';
 import Playvoice from './works/Playvoice';
 import Projects from './works/Projects';
+import { useMemo } from 'react';
 const ModalContainer = styled.div`
   position: fixed;
   top: 0;
@@ -46,18 +47,24 @@ const ModalWrapper = styled(motion.div)`
 const CloseButton = styled.button`
   position: fixed;
   top: 6rem;
+  left: unset;
   right: calc(1rem + 7.5%);
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
   border: 2px solid #000;
   background-color: #000;
   color: #fff;
-  font-size: 2rem;
+  font-size: 1.8rem;
   text-align: center;
   cursor: pointer;
   z-index: 500;
   @media (min-width: 768px) {
+    right: unset;
+    width: 45px;
+    height: 45px;
+    border-radius: 45px;
+    font-size: 2rem;
     left: calc(0.5rem + 7.5%);
   }
   @media (min-width: 1200px) {
@@ -105,6 +112,9 @@ const UrlContent = styled.div`
   span {
     color: ${(props) => props.theme.main2};
     font-weight: 600;
+  }
+  a {
+    overflow-wrap: break-word;
   }
   @media (min-width: 1200px) {
     font-size: 16px;
@@ -156,7 +166,7 @@ interface IWorkModal {
   callback: () => void;
 }
 export default function WorkModal({ idx, callback }: IWorkModal) {
-  const work = workList[idx];
+  const work = useMemo(() => workList[idx], [idx]);
   return (
     <ModalContainer>
       <BackgroundContainer

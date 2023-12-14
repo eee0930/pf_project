@@ -117,11 +117,16 @@ export default function ContentSection() {
       <AbsoluteWrapper>
         {isGather ? (
           <>
-            <NextButtonSection>
+            <NextButtonSection className="d-none d-md-block">
               <PrevButton onClick={() => getNextIdx(false)}>prev</PrevButton>
               <NextButton onClick={() => getNextIdx(true)}>next</NextButton>
             </NextButtonSection>
-            <WorkCards idx={idx} nextIdx={nextIdx} isNext={isNext} />
+            <WorkCards
+              idx={idx}
+              nextIdx={nextIdx}
+              isNext={isNext}
+              callBackNext={getNextIdx}
+            />
           </>
         ) : (
           <DisplayCards />

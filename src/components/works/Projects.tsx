@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { workInfo } from '../../assets/works';
 import { backColors } from '../../assets/ment';
+import { useMemo } from 'react';
 
 interface IProject {
   idx: number;
@@ -87,7 +88,7 @@ const Number = styled.span`
   }
 `;
 export default function Projects({ idx }: IProject) {
-  const work = workInfo[idx];
+  const work = useMemo(() => workInfo[idx], [idx]);
   return (
     <ProjectWrapper>
       <DefaultTitleSection>
