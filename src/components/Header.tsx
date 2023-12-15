@@ -140,7 +140,10 @@ export default function Header() {
       <PortfolioHeader className="row">
         <AboutMeSection className="col-6 col-md-3">
           <span>
-            <AboutMeBtn onClick={() => setOpenAboutMe(true)}>
+            <AboutMeBtn
+              onClick={() => setOpenAboutMe(true)}
+              title="about 송화연"
+            >
               About Me
             </AboutMeBtn>
           </span>
@@ -150,6 +153,7 @@ export default function Header() {
               dangerouslySetInnerHTML={{ __html: gitSvg }}
               target="_blank"
               rel="noreferrer"
+              title="github으로 이동"
             />
           </span>
         </AboutMeSection>
@@ -163,7 +167,10 @@ export default function Header() {
           ))}
         </IconSection>
         <ContactMeSection className="col-6 col-md-3">
-          <AboutMeBtn onClick={() => setOpenContactMe(true)}>
+          <AboutMeBtn
+            onClick={() => setOpenContactMe(true)}
+            title="연락주세요!"
+          >
             Contact
           </AboutMeBtn>
         </ContactMeSection>
