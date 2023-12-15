@@ -6,7 +6,7 @@ import { workList, workLen } from '../../assets/works';
 import { TitleCover2 } from '../../assets/globalStyles';
 import { backColors } from '../../assets/ment';
 import MoniterImg from './MoniterImg';
-import { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import {
   CardNum,
   Eng,
@@ -93,6 +93,7 @@ export default function WorkCards({
         dragConstraints={{ left: 1, right: 1 }}
         dragElastic={1}
         onDragEnd={(e, { offset, velocity }) => {
+          e.stopPropagation();
           const swipe = swipePower(offset.x, velocity.x);
           handleDragEnd(swipe);
         }}

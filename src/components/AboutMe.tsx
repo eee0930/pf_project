@@ -180,6 +180,10 @@ const backVariants = {
   },
   exit: {
     backgroundColor: `rgba(255, 255, 255, 0)`,
+    transition: {
+      delay: 0.4,
+      duration: 0.5,
+    },
   },
 };
 const fadeVariants = {
@@ -191,6 +195,13 @@ const fadeVariants = {
     transition: {
       delay: 0.4,
       duration: 0.5,
+    },
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      delay: 0.2,
+      duration: 0.3,
     },
   },
 };
@@ -251,6 +262,7 @@ export default function AboutMe({ callback }: IAboutMe) {
               variants={fadeVariants}
               initial="initial"
               animate="animate"
+              exit="exit"
               className="col-12 col-md-5"
             >
               <img
