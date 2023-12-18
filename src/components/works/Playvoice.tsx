@@ -84,10 +84,23 @@ const Number = styled.span`
 `;
 const ImageSection = styled.div`
   img {
+    width: 100%;
     display: block;
     margin: 1rem 0;
     max-width: 500px;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+  }
+  @media (min-width: 768px) {
+    img {
+      max-width: 500px;
+      margin: 0.5rem 0 0;
+    }
+  }
+  @media (min-width: 1200px) {
+    margin-top: 1rem;
+    img {
+      max-width: 700px;
+    }
   }
 `;
 export default function Playvoice() {
