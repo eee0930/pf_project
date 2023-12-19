@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { workInfo } from '../../assets/works';
-import { backColors } from '../../assets/ment';
+import { backColors, titles } from '../../assets/ment';
 import { useMemo } from 'react';
 
 interface IProject {
@@ -18,8 +18,9 @@ const DefaultTitleSection = styled.div`
   letter-spacing: -0.02em;
   font-size: 15px;
   span {
-    color: ${(props) => props.theme.main2};
     font-weight: 600;
+    display: inline-block;
+    margin: 0.2rem 0;
   }
   label {
     padding: 2px 5px;
@@ -58,9 +59,19 @@ const ContentSection = styled.div`
 `;
 const Title = styled.div`
   margin-bottom: 1rem;
-  color: ${(props) => props.theme.main2};
   font-weight: 600;
   font-size: 18px;
+  @media (min-width: 991px) {
+    position: relative;
+    &:after {
+      content: '●';
+      position: absolute;
+      color: inherit;
+      top: 25%;
+      font-size: 10px;
+      left: -1.5rem;
+    }
+  }
   @media (min-width: 1200px) {
     font-size: 20px;
   }
@@ -79,59 +90,61 @@ const Ol = styled.ol`
 const Number = styled.span`
   position: absolute;
   top: 0;
-  left: -1.5rem;
+  left: -1rem;
   font-size: 18px;
   font-weight: 600;
-  color: ${(props) => props.theme.main2};
+  @media (min-width: 768px) {
+    left: -1.2rem;
+  }
+  @media (min-width: 991px) {
+    left: -1.5rem;
+  }
   @media (min-width: 1200px) {
     font-size: 20px;
   }
 `;
 export default function Projects({ idx }: IProject) {
-  const work = useMemo(() => workInfo[idx], [idx]);
+  const { period, contribution, skill, color, list, issue, use } = useMemo(
+    () => workInfo[idx],
+    [idx]
+  );
   return (
     <ProjectWrapper>
       <DefaultTitleSection>
-        <span>Period : </span> {work.period} <br />
-        <span>Contribution : </span> {work.Contribution} <br />
-        <span>Skills : </span>{' '}
-        {work.skill.map((s) => (
-          <label
-            key={s}
-            style={{
-              backgroundColor: backColors[idx],
-              color: idx === 0 ? '#000' : '',
-            }}
-          >
+        <span style={{ color }}>{titles.p} : </span> {period} <br />
+        <span style={{ color }}>{titles.c} : </span> {contribution} <br />
+        <span style={{ color }}>{titles.s} : </span>{' '}
+        {skill.map((s) => (
+          <label key={s} style={{ backgroundColor: color }}>
             {s}
           </label>
         ))}
       </DefaultTitleSection>
       <ContentSection>
-        <Title>개발한 프로덕트의 기능 및 특징</Title>
+        <Title style={{ color }}>{titles.functions}</Title>
         <Ol>
-          {work.list.map((w, i) => (
+          {list.map((w, i) => (
             <li key={i}>
-              <Number>{i + 1}</Number>
+              <Number style={{ color }}>{i + 1}</Number>
               <span dangerouslySetInnerHTML={{ __html: w }} />
             </li>
           ))}
         </Ol>
       </ContentSection>
       <ContentSection>
-        <Title>개발 과정에서의 어려움 및 해결 방법</Title>
+        <Title style={{ color }}>{titles.issues}</Title>
         <Ol>
-          {work.issue.map((w, i) => (
+          {issue.map((w, i) => (
             <li key={i}>
-              <Number>{i + 1}</Number>
+              <Number style={{ color }}>{i + 1}</Number>
               <span dangerouslySetInnerHTML={{ __html: w }} />
             </li>
           ))}
         </Ol>
       </ContentSection>
       <ContentSection>
-        <Title>개발한 프로덕트의 활용 사례</Title>
-        <div>{work.use}</div>
+        <Title style={{ color }}>{titles.uses}</Title>
+        <div>{use}</div>
       </ContentSection>
     </ProjectWrapper>
   );

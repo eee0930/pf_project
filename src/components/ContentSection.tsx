@@ -1,7 +1,7 @@
-import styled from 'styled-components';
-import BackDivide from './contents/BackDivide';
-import WorkCards from './contents/WorkCards';
 import { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import BgEffect from './contents/BgEffect';
+import GatherCards from './contents/GatherCards';
 import { workLen } from '../assets/works';
 import DisplayButton from './DisplayButton';
 import DisplayCards from './contents/DisplayCards';
@@ -111,7 +111,7 @@ export default function ContentSection() {
   return (
     <ContentContainer>
       <AbsoluteWrapper>
-        <BackDivide idx={idx} prevIdx={prevIdx} isNext={isNext} />
+        <BgEffect idx={idx} prevIdx={prevIdx} isNext={isNext} />
       </AbsoluteWrapper>
       {!isGather && <NowBack style={{ backgroundColor: backColors[idx] }} />}
       <AbsoluteWrapper>
@@ -121,7 +121,7 @@ export default function ContentSection() {
               <PrevButton onClick={() => getNextIdx(false)}>prev</PrevButton>
               <NextButton onClick={() => getNextIdx(true)}>next</NextButton>
             </NextButtonSection>
-            <WorkCards
+            <GatherCards
               idx={idx}
               nextIdx={nextIdx}
               isNext={isNext}

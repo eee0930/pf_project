@@ -25,11 +25,12 @@ export const backColors = [
   'rgb(52,116,55)',
 ];
 
-export const projectTitle = [
-  '개발 기간',
-  '기여도',
-  '활용 기술',
-  '기능 및 특징',
-  '이슈 및 해결 방법',
-  '활용 사례',
-];
+export const titles = {
+  p: 'Period',
+  c: 'Contribution',
+  s: 'Skills',
+  functions: '개발한 프로덕트의 기능 및 특징',
+  issues: '개발 과정에서의 어려움 및 해결 방법',
+  uses: '개발한 프로덕트의 활용 사례',
+  etc: 'ETC',
+};

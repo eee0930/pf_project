@@ -131,17 +131,17 @@ const Shapes = styled.span`
   }
 `;
 export default function Header() {
-  const [openAboutMe, setOpenAboutMe] = useState(false);
-  const [openContactMe, setOpenContactMe] = useState(false);
-  const closeAboutMeModal = () => setOpenAboutMe(false);
-  const closeContactMeModal = () => setOpenContactMe(false);
+  const [isOpenAboutMe, setIsOpenAboutMe] = useState(false);
+  const [isOpenContactMe, setIsOpenContactMe] = useState(false);
+  const closeAboutMeModal = () => setIsOpenAboutMe(false);
+  const closeContactMeModal = () => setIsOpenContactMe(false);
   return (
     <>
       <PortfolioHeader className="row">
         <AboutMeSection className="col-6 col-md-3">
           <span>
             <AboutMeBtn
-              onClick={() => setOpenAboutMe(true)}
+              onClick={() => setIsOpenAboutMe(true)}
               title="about 송화연"
             >
               About Me
@@ -168,15 +168,15 @@ export default function Header() {
         </IconSection>
         <ContactMeSection className="col-6 col-md-3">
           <AboutMeBtn
-            onClick={() => setOpenContactMe(true)}
+            onClick={() => setIsOpenContactMe(true)}
             title="연락주세요!"
           >
             Contact
           </AboutMeBtn>
         </ContactMeSection>
       </PortfolioHeader>
-      {openAboutMe && <AboutMe callback={closeAboutMeModal} />}
-      {openContactMe && <ContactMe callback={closeContactMeModal} />}
+      {isOpenAboutMe && <AboutMe callback={closeAboutMeModal} />}
+      {isOpenContactMe && <ContactMe callback={closeContactMeModal} />}
     </>
   );
 }

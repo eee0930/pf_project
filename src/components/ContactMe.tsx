@@ -41,8 +41,8 @@ const CloseButton = styled.div`
 `;
 const ContactMeWrapper = styled.div`
   position: relative;
-  width: calc(100% - 2rem);
-  height: calc(100vh - 2rem);
+  width: calc(100% - 3rem);
+  height: calc(100vh - 3rem);
   margin: 1rem auto;
   @media (min-width: 768px) {
     width: calc(100% - 4rem);
@@ -136,8 +136,8 @@ const CloneIcon = styled.div`
   height: 20px;
   border: solid 2px #fff;
   position: absolute;
-  top: calc(50% - 11.5px);
-  left: calc(50% - 11.5px);
+  top: calc(50% - 12.5px);
+  left: calc(50% - 12.5px);
   &:after {
     content: '';
     border-radius: 3px;
@@ -218,66 +218,51 @@ const up3Variants = {
 interface IContactMe {
   callback: () => void;
 }
-
+const ANIMATE_INFO = {
+  initial: 'initial',
+  animate: 'animate',
+};
 const EMAIL_BTN_VALUE = 'Email 보내기';
 const CLONE_VALUE = '클립보드에 복사되었습니다.';
 export default function ContactMe({ callback }: IContactMe) {
-  const [openMsg, setOpenMsg] = useState(false);
+  const [isOpenMsg, setIsOpenMsg] = useState(false);
   const handleClickClone = () => {
-    setOpenMsg(true);
+    if (isOpenMsg) return;
+    setIsOpenMsg(true);
     navigator.clipboard.writeText(email).catch((err) => {
       console.log('Something went wrong', err);
     });
     const timeout = setTimeout(() => {
-      setOpenMsg(false);
+      setIsOpenMsg(false);
       clearTimeout(timeout);
     }, 1500);
   };
   return (
     <AnimatePresence>
-      <ContactMeSection
-        variants={backVariants}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-      >
+      <ContactMeSection variants={backVariants} {...ANIMATE_INFO} exit="exit">
         <CloseButton onClick={callback}>&times;</CloseButton>
         <ContactMeWrapper>
-          <ContactMeContainer
-            variants={fadeVariants}
-            initial="initial"
-            animate="animate"
-          >
-            <TitleCover
-              variants={up1Variants}
-              initial="initial"
-              animate="animate"
-            >
+          <ContactMeContainer variants={fadeVariants} {...ANIMATE_INFO}>
+            <TitleCover variants={up1Variants} {...ANIMATE_INFO}>
               Contact Me
             </TitleCover>
             <Introduction>
               <motion.div
                 variants={up2Variants}
-                initial="initial"
-                animate="animate"
+                {...ANIMATE_INFO}
                 className="email"
               >
                 {email}
               </motion.div>
-              <ButtonSection
-                variants={up3Variants}
-                initial="initial"
-                animate="animate"
-              >
+              <ButtonSection variants={up3Variants} {...ANIMATE_INFO}>
                 <Button href={`mailto:${email}`}>{EMAIL_BTN_VALUE}</Button>
                 <Button
                   as="button"
                   onClick={handleClickClone}
                   className="clone"
-                  disabled={openMsg}
                 >
                   <CloneIcon />
-                  {openMsg && <ButtonMsg>{CLONE_VALUE}</ButtonMsg>}
+                  {isOpenMsg && <ButtonMsg>{CLONE_VALUE}</ButtonMsg>}
                 </Button>
               </ButtonSection>
             </Introduction>

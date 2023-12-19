@@ -1,12 +1,12 @@
+import { useMemo } from 'react';
 import styled from 'styled-components';
-import { backColors } from '../assets/ment';
 import { motion } from 'framer-motion';
 import { TitleCover } from '../assets/globalStyles';
-import { workList } from '../assets/works';
+import { workLen, workList } from '../assets/works';
 import MoniterImg from './contents/MoniterImg';
 import Playvoice from './works/Playvoice';
 import Projects from './works/Projects';
-import { useMemo } from 'react';
+
 const ModalContainer = styled.div`
   position: fixed;
   top: 0;
@@ -46,9 +46,8 @@ const ModalWrapper = styled(motion.div)`
 `;
 const CloseButton = styled.button`
   position: fixed;
-  top: 6rem;
-  left: unset;
-  right: calc(1rem + 7.5%);
+  top: 1.5rem;
+  left: calc(10% - 0.5rem);
   width: 40px;
   height: 40px;
   border-radius: 40px;
@@ -60,7 +59,7 @@ const CloseButton = styled.button`
   cursor: pointer;
   z-index: 500;
   @media (min-width: 768px) {
-    right: unset;
+    top: 6rem;
     width: 45px;
     height: 45px;
     border-radius: 45px;
@@ -72,7 +71,6 @@ const CloseButton = styled.button`
     left: calc(2rem + 7.5%);
   }
 `;
-
 const ModalContentSection = styled(motion.div)``;
 const DefaultInfoSection = styled.div`
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -93,9 +91,10 @@ const LogoSection = styled.div`
   }
 `;
 const Logo = styled.img`
-  height: 120px;
+  height: 100px;
   margin: 0 auto 1rem;
   @media (min-width: 768px) {
+    height: 120px;
     margin: 0 0 1rem;
   }
 `;
@@ -110,7 +109,8 @@ const UrlContent = styled.div`
   letter-spacing: -0.02em;
   font-size: 15px;
   span {
-    color: ${(props) => props.theme.main2};
+    display: inline-block;
+    margin: 0.2rem 0;
     font-weight: 600;
   }
   a {
@@ -161,19 +161,28 @@ const backgroundVariant = {
     },
   },
 };
+
+const LINK_DEFAULT = {
+  target: '_blank',
+  rel: 'noreferrer',
+};
+
 interface IWorkModal {
   idx: number;
   callback: () => void;
 }
 export default function WorkModal({ idx, callback }: IWorkModal) {
-  const work = useMemo(() => workList[idx], [idx]);
+  const { name, color, logo, git, url, des } = useMemo(
+    () => workList[idx],
+    [idx]
+  );
   return (
     <ModalContainer>
       <BackgroundContainer
         variants={backgroundVariant}
         initial="initial"
         animate="animate"
-        style={{ backgroundColor: backColors[idx] }}
+        style={{ backgroundColor: color[0] }}
         onClick={callback}
       ></BackgroundContainer>
       <ModalWrapper
@@ -192,43 +201,41 @@ export default function WorkModal({ idx, callback }: IWorkModal) {
         >
           <DefaultInfoSection className="row">
             <div className="col-12 col-md-6">
-              <TitleCover
-                style={{ backgroundColor: backColors[idx], color: '#fff' }}
-              >
-                {work.name}
+              <TitleCover style={{ backgroundColor: color[1], color: '#fff' }}>
+                {name}
               </TitleCover>
               <LogoSection>
-                {work.logo ? (
+                {logo ? (
                   <Logo
-                    src={`${process.env.PUBLIC_URL}/works/logo/${work.logo}`}
+                    src={`${process.env.PUBLIC_URL}/works/logo/${logo}`}
                     alt="logo"
                   />
                 ) : (
-                  <Title>{work.name}</Title>
+                  <Title>{name}</Title>
                 )}
               </LogoSection>
               <UrlContent>
-                <span>Git :</span>{' '}
-                <a href={work.git} target="_blank" rel="noreferrer">
-                  {work.git}
+                <span style={{ color: color[1] }}>Git :</span>{' '}
+                <a href={git} {...LINK_DEFAULT}>
+                  {git}
                 </a>
                 <br />
-                <span>Website :</span>{' '}
-                {idx === 5 ? (
-                  `${work.url} (현재 운영 중이지 않음)`
+                <span style={{ color: color[1] }}>Website :</span>{' '}
+                {idx === workLen - 1 ? (
+                  `${url} (현재 운영 중이지 않음)`
                 ) : (
-                  <a href={work.url} target="_blank" rel="noreferrer">
-                    {work.url}
+                  <a href={url} {...LINK_DEFAULT}>
+                    {url}
                   </a>
                 )}
               </UrlContent>
-              <DesContent>{work.des}</DesContent>
+              <DesContent>{des}</DesContent>
             </div>
             <MoniterSection className="col-12 col-md-6 align-self-center">
               <MoniterImg idx={idx} />
             </MoniterSection>
           </DefaultInfoSection>
-          {idx === 5 ? <Playvoice /> : <Projects idx={idx} />}
+          {idx === workLen - 1 ? <Playvoice /> : <Projects idx={idx} />}
         </ModalContentSection>
       </ModalWrapper>
     </ModalContainer>

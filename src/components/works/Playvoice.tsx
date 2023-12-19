@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { playvoiceWork } from '../../assets/works';
-import { backColors } from '../../assets/ment';
+import { playvoiceWorkInfo } from '../../assets/works';
+import { titles } from '../../assets/ment';
 
 const ProjectWrapper = styled.div`
   padding: 3rem 0;
@@ -14,8 +14,9 @@ const DefaultTitleSection = styled.div`
   font-size: 15px;
   margin-bottom: 5rem;
   span {
-    color: ${(props) => props.theme.main2};
     font-weight: 600;
+    display: inline-block;
+    margin: 0.2rem 0;
   }
   label {
     padding: 2px 5px;
@@ -54,21 +55,30 @@ const ContentSection = styled.div`
   }
 `;
 const Title = styled.div`
-  margin-bottom: 1rem;
-  color: ${(props) => props.theme.main2};
+  margin-bottom: 0.5rem;
   font-weight: 600;
   font-size: 18px;
-
+  @media (min-width: 991px) {
+    position: relative;
+    &:after {
+      content: '●';
+      position: absolute;
+      color: inherit;
+      top: 25%;
+      font-size: 10px;
+      left: -1.5rem;
+    }
+  }
   @media (min-width: 1200px) {
     font-size: 20px;
   }
 `;
 const Ol = styled.ol`
-  line-height: 1.2;
   font-size: 15px;
   li {
     position: relative;
     margin-bottom: 1rem;
+    line-height: 1.5;
   }
   @media (min-width: 1200px) {
     font-size: 16px;
@@ -78,9 +88,17 @@ const Number = styled.span`
   position: absolute;
   top: 0;
   left: -1rem;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
-  color: ${(props) => props.theme.main2};
+  @media (min-width: 768px) {
+    left: -1.2rem;
+  }
+  @media (min-width: 991px) {
+    left: -1.5rem;
+  }
+  @media (min-width: 1200px) {
+    font-size: 20px;
+  }
 `;
 const ImageSection = styled.div`
   img {
@@ -104,75 +122,55 @@ const ImageSection = styled.div`
   }
 `;
 export default function Playvoice() {
+  const { list, issue, use, color } = playvoiceWorkInfo;
   return (
     <ProjectWrapper>
-      {playvoiceWork.list.map((pro) => (
-        <DefaultTitleSection key={pro.name}>
-          <Title>{pro.name}</Title>
-          <span>Period : </span> {pro.period} <br />
-          <span>Contribution : </span> {pro.contribute} <br />
-          <span>Skills : </span>{' '}
-          {pro.skill.map((s) => (
-            <label
-              key={s}
-              style={{
-                backgroundColor: backColors[5],
-              }}
-            >
-              {s}
-            </label>
-          ))}
-          <div>
-            <span>개발한 프로덕트의 기능 및 특징</span>
-            <br />
-            {pro.des.map((d, i) => (
-              <p key={i}>{d}</p>
+      {list.map((pro) => {
+        const { name, period, skill, contribution, des, img } = pro;
+        return (
+          <DefaultTitleSection key={name}>
+            <Title style={{ color }}>{name}</Title>
+            <span style={{ color }}>{titles.p} : </span> {period} <br />
+            <span style={{ color }}>{titles.c} : </span> {contribution} <br />
+            <span style={{ color }}>{titles.s} : </span>{' '}
+            {skill.map((s) => (
+              <label key={s} style={{ backgroundColor: color }}>
+                {s}
+              </label>
             ))}
-          </div>
-          <ImageSection>
-            {pro.img.map((image, i) => (
-              <img
-                key={i}
-                src={`${process.env.PUBLIC_URL}/works/playvoice/${image}`}
-                alt={pro.name}
-              />
-            ))}
-          </ImageSection>
-        </DefaultTitleSection>
-      ))}
-      <DefaultTitleSection>
-        <div>
-          <span>ETC</span>
-          <br />
-          {playvoiceWork.des.map((d, i) => (
-            <p key={i}>{d}</p>
-          ))}
-        </div>
-        <ImageSection>
-          {playvoiceWork.img.map((image, i) => (
-            <img
-              key={i}
-              src={`${process.env.PUBLIC_URL}/works/playvoice/${image}`}
-              alt="mypage"
-            />
-          ))}
-        </ImageSection>
-      </DefaultTitleSection>
-
+            <div>
+              <span style={{ color }}>{titles.functions}</span>
+              <br />
+              {des.map((d, i) => (
+                <p key={i}>{d}</p>
+              ))}
+            </div>
+            <ImageSection>
+              {img.map((image, i) => (
+                <img
+                  key={i}
+                  src={`${process.env.PUBLIC_URL}/works/playvoice/${image}`}
+                  alt={name}
+                />
+              ))}
+            </ImageSection>
+          </DefaultTitleSection>
+        );
+      })}
       <ContentSection>
-        <Title>개발 과정에서의 어려움 및 해결 방법</Title>
+        <Title style={{ color }}>{titles.issues}</Title>
         <Ol>
-          {playvoiceWork.issue.map((w, i) => (
+          {issue.map((w, i) => (
             <li key={i}>
-              <Number>{i + 1}</Number>
+              <Number style={{ color }}>{i + 1}</Number>
               <span dangerouslySetInnerHTML={{ __html: w }} />
             </li>
           ))}
         </Ol>
       </ContentSection>
       <ContentSection>
-        <Title>개발한 프로덕트의 활용 사례</Title>
-        <div>{playvoiceWork.use}</div>
+        <Title style={{ color }}>{titles.uses}</Title>
+        <div>{use}</div>
       </ContentSection>
     </ProjectWrapper>
   );

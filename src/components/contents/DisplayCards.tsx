@@ -40,20 +40,20 @@ const CardWrapper = styled(motion.div)`
 `;
 
 export default function DisplayCards() {
-  const [modalOpen, setModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [nowIdx, setNowIdx] = useState(0);
-  const openModal = (idx: number) => {
+  const handleOpenModal = (idx: number) => {
     setNowIdx(idx);
-    setModalOpen(true);
+    setIsModalOpen(true);
   };
-  const callback = () => setModalOpen(false);
+  const callback = () => setIsModalOpen(false);
   return (
     <>
       <DisplayCardsWrapper className="row">
         {workList.map((work, i) => (
           <CardGrid className="col-12 col-md-6 col-lg-4" key={work.id}>
             <CardWrapper>
-              <DisplayCard idx={i} callback={() => openModal(i)}>
+              <DisplayCard idx={i} callback={() => handleOpenModal(i)}>
                 <TitleSection>
                   <CardNum style={{ color: backColors[i] }}>{i + 1}</CardNum>
                   <TitleCover2
@@ -79,7 +79,7 @@ export default function DisplayCards() {
           </CardGrid>
         ))}
       </DisplayCardsWrapper>
-      {modalOpen && <WorkModal idx={nowIdx} callback={callback} />}
+      {isModalOpen && <WorkModal idx={nowIdx} callback={callback} />}
     </>
   );
 }

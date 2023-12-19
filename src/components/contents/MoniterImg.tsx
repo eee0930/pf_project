@@ -1,6 +1,7 @@
 import { styled } from 'styled-components';
 import { backColors } from '../../assets/ment';
 import { workList } from '../../assets/works';
+import { useMemo } from 'react';
 
 interface IMoniterImg {
   idx: number;
@@ -56,18 +57,22 @@ const MobileImg = styled.img`
     1px 1px 3px rgba(255, 255, 255, 0.2);
 `;
 export default function MoniterImg({ idx }: IMoniterImg) {
+  const work = useMemo(() => workList[idx], [idx]);
+  const bgStyle = {
+    backgroundColor: useMemo(() => backColors[idx], [idx]),
+  };
+  const workImgs = {
+    pc: `${process.env.PUBLIC_URL}/works/${work.img[0]}.png`,
+    mobile: `${process.env.PUBLIC_URL}/works/${work.img[1]}.png`,
+  };
   return (
     <MoniterWrapper>
-      <PCMoniter style={{ backgroundColor: backColors[idx] }}>
-        <PcImg
-          src={`${process.env.PUBLIC_URL}/works/${workList[idx].img[0]}.png`}
-        />
+      <PCMoniter style={bgStyle}>
+        <PcImg src={workImgs.pc} />
       </PCMoniter>
-      {workList[idx]?.img[1] && (
-        <MobileMoniter style={{ backgroundColor: backColors[idx] }}>
-          <MobileImg
-            src={`${process.env.PUBLIC_URL}/works/${workList[idx].img[1]}.png`}
-          />
+      {workImgs?.mobile && (
+        <MobileMoniter style={bgStyle}>
+          <MobileImg src={workImgs.mobile} />
         </MobileMoniter>
       )}
     </MoniterWrapper>

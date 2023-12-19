@@ -41,8 +41,8 @@ const CloseButton = styled.div`
 `;
 const AboutMeWrapper = styled.div`
   position: relative;
-  width: calc(100% - 2rem);
-  height: calc(100vh - 2rem);
+  width: calc(100% - 3rem);
+  height: calc(100vh - 3rem);
   margin: 1rem auto;
   @media (min-width: 768px) {
     width: calc(100% - 4rem);
@@ -243,25 +243,24 @@ const up3Variants = {
   },
 };
 
+const ANIMATE_INFO = {
+  initial: 'initial',
+  animate: 'animate',
+};
+
 interface IAboutMe {
   callback: () => void;
 }
 export default function AboutMe({ callback }: IAboutMe) {
   return (
     <AnimatePresence>
-      <AboutMeSection
-        variants={backVariants}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-      >
+      <AboutMeSection variants={backVariants} {...ANIMATE_INFO} exit="exit">
         <CloseButton onClick={callback}>&times;</CloseButton>
         <AboutMeWrapper>
           <AboutMeContainer className="row">
             <ImageSection
               variants={fadeVariants}
-              initial="initial"
-              animate="animate"
+              {...ANIMATE_INFO}
               exit="exit"
               className="col-12 col-md-5"
             >
@@ -278,26 +277,17 @@ export default function AboutMe({ callback }: IAboutMe) {
               ))}
             </ImageSection>
             <AboutSection className="col-12 col-md-7">
-              <TitleCover
-                variants={up1Variants}
-                initial="initial"
-                animate="animate"
-              >
+              <TitleCover variants={up1Variants} {...ANIMATE_INFO}>
                 About
               </TitleCover>
-              <SubTitle
-                variants={up2Variants}
-                initial="initial"
-                animate="animate"
-              >
+              <SubTitle variants={up2Variants} {...ANIMATE_INFO}>
                 Front-End Developer
                 <br />
                 HwaYeon Song
               </SubTitle>
               <Introduction
                 variants={up3Variants}
-                initial="initial"
-                animate="animate"
+                {...ANIMATE_INFO}
                 dangerouslySetInnerHTML={{ __html: introduction }}
               />
             </AboutSection>

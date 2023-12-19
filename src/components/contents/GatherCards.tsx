@@ -1,12 +1,11 @@
+import { useCallback, useMemo, useState } from 'react';
 import { styled } from 'styled-components';
-import { Card, BackCard, EmptyCard } from './Card';
 import { AnimatePresence, motion } from 'framer-motion';
 import WorkModal from '../WorkModal';
 import { workList, workLen } from '../../assets/works';
 import { TitleCover2 } from '../../assets/globalStyles';
-import { backColors } from '../../assets/ment';
 import MoniterImg from './MoniterImg';
-import React, { useCallback, useMemo, useState } from 'react';
+import { Card, BackCard, EmptyCard } from './Card';
 import {
   CardNum,
   Eng,
@@ -68,14 +67,14 @@ const swipePower = (offset: number, velocity: number) => {
   return Math.abs(offset) * velocity;
 };
 
-export default function WorkCards({
+export default function GatherCards({
   idx,
   nextIdx,
   isNext,
   callBackNext,
 }: IWorkCards) {
-  const [modalOpen, setModalOpen] = useState(false);
-  const { name, eng } = useMemo(() => workList[idx], [idx]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { name, color, eng, logo } = useMemo(() => workList[idx], [idx]);
   const nextWork = useMemo(() => workList[nextIdx], [nextIdx]);
 
   const handleDragEnd = useCallback((swipe: number) => {
@@ -104,11 +103,11 @@ export default function WorkCards({
           ))}
           <BackCard>
             <TitleSection>
-              <CardNum style={{ color: backColors[nextIdx] }}>
+              <CardNum style={{ color: nextWork.color[0] }}>
                 {nextIdx + 1}
               </CardNum>
               <TitleCover2
-                style={{ backgroundColor: backColors[nextIdx], color: '#fff' }}
+                style={{ backgroundColor: nextWork.color[1], color: '#fff' }}
               >
                 {name}
               </TitleCover2>
@@ -138,18 +137,18 @@ export default function WorkCards({
             exit="exit"
             transition={{ duration: 0.3 }}
           >
-            <Card callback={() => setModalOpen(true)}>
+            <Card callback={() => setIsModalOpen(true)}>
               <TitleSection>
-                <CardNum style={{ color: backColors[idx] }}>{idx + 1}</CardNum>
+                <CardNum style={{ color: color[0] }}>{idx + 1}</CardNum>
                 <TitleCover2
-                  style={{ backgroundColor: backColors[idx], color: '#fff' }}
+                  style={{ backgroundColor: color[1], color: '#fff' }}
                 >
                   {name}
                 </TitleCover2>
-                {workList[idx]?.logo ? (
+                {logo ? (
                   <LogoSection>
                     <Logo
-                      src={`${process.env.PUBLIC_URL}/works/logo/${workList[idx]?.logo}`}
+                      src={`${process.env.PUBLIC_URL}/works/logo/${logo}`}
                       alt="logo"
                     />
                   </LogoSection>
@@ -163,8 +162,8 @@ export default function WorkCards({
           </PointCard>
         </AnimatePresence>
       </Wrapper>
-      {modalOpen && (
-        <WorkModal idx={idx} callback={() => setModalOpen(false)} />
+      {isModalOpen && (
+        <WorkModal idx={idx} callback={() => setIsModalOpen(false)} />
       )}
     </>
   );

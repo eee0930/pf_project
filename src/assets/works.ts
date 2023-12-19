@@ -1,7 +1,7 @@
 export interface IWorkList {
   id: number;
   name: string;
-  color: string;
+  color: string[];
   logo?: string;
   img: string[];
   git: string;
@@ -10,11 +10,11 @@ export interface IWorkList {
   eng: string;
 }
 
-export const workList = [
+const works = [
   {
     id: 202308,
     name: 'Cheese Book',
-    color: '#F9CC73',
+    color: ['rgb(255,209,106)', 'rgb(242, 173, 24)'],
     logo: 'cheesebook.png',
     img: ['cheesebook1', 'cheesebook2'],
     git: 'https://github.com/eee0930/cheese_book',
@@ -25,7 +25,7 @@ export const workList = [
   {
     id: 202302,
     name: 'Netflix Clone',
-    color: '#af3435',
+    color: ['rgb(223,70,58)', 'rgb(178, 56, 48)'],
     img: ['moviebooth1', 'moviebooth2'],
     git: 'https://github.com/eee0930/netflix_clone',
     url: 'https://eee0930.github.io/netflix_clone',
@@ -35,7 +35,7 @@ export const workList = [
   {
     id: 202303,
     name: 'Org Issue App',
-    color: '#2A9885',
+    color: ['rgb(63,121,178)', 'rgb(65,121,178)'],
     img: ['org1', 'org2'],
     git: 'https://github.com/eee0930/org_issue_app',
     url: 'https://eee0930.github.io/org_issue_app/',
@@ -45,7 +45,7 @@ export const workList = [
   {
     id: 202304,
     name: 'MeowMeow Album',
-    color: '#63C4F0',
+    color: ['rgb(49,114,92)', 'rgb(50,114,92)'],
     img: ['cat1', 'cat2'],
     git: 'https://github.com/eee0930/meowmeow_album',
     url: 'https://eee0930.github.io/meowmeow_album/',
@@ -55,32 +55,36 @@ export const workList = [
   {
     id: 202201,
     name: 'Momentum',
-    color: '#0E6439',
+    color: ['rgb(70,84,143)', 'rgb(70,85,143)'],
     img: ['todo1', 'todo2'],
     git: 'https://github.com/eee0930/momentum_clone',
     url: 'https://eee0930.github.io/momentum_clone/',
     des: '아름다운 배경과 함께 명언, 현재 날씨를 제공해주며, 스케쥴을 정리할 수 있는 앱입니다. 배경과 명언은 랜덤으로 제공됩니다.',
     eng: 'Useful and Beautiful To Do list',
   },
-  {
-    id: 202012,
-    name: 'playvoice.org',
-    color: '#1b1f40',
-    logo: 'playvoice.png',
-    img: ['playvoice1', 'playvoice2'],
-    git: 'https://github.com/eee0930/playvoice_project',
-    url: 'https://playvoice.org/',
-    des: 'Playvoice는 언어 학습 이론과 AI기반 IT기술을 영어 학습에 적용한 회원 참여형 앱 기반 영어 플랫폼입니다.',
-    eng: 'English platform that applies language learning theory and AI tech',
-  },
 ];
 
+const playvoiceWork = {
+  id: 202012,
+  name: 'playvoice.org',
+  color: ['rgb(52,116,55)', 'rgb(55,116,55)'],
+  logo: 'playvoice.png',
+  img: ['playvoice1', 'playvoice2'],
+  git: 'https://github.com/eee0930/playvoice_project',
+  url: 'https://playvoice.org/',
+  des: 'Playvoice는 언어 학습 이론과 AI기반 IT기술을 영어 학습에 적용한 회원 참여형 앱 기반 영어 플랫폼입니다.',
+  eng: 'English platform that applies language learning theory and AI tech',
+};
+
+export const workList = works.concat(playvoiceWork);
 export const workLen = workList.length;
+
 export interface IWorkInfo {
   id: number;
   name: string;
   period: string;
-  Contribution: string;
+  contribution: string;
+  color: string;
   skill: string[];
   list: string[];
   issue: string[];
@@ -91,7 +95,8 @@ export const workInfo = [
     id: 202308,
     name: 'Cheese Book',
     period: '2023.08.11 - 2023.09.20',
-    Contribution: '100%',
+    contribution: '100%',
+    color: 'rgb(242, 173, 24)',
     skill: [
       'React.js',
       'TypeScript',
@@ -124,7 +129,8 @@ export const workInfo = [
     id: 202302,
     name: 'Netflix Clone',
     period: '2023.01.09 - 2023.01.20',
-    Contribution: '100%',
+    contribution: '100%',
+    color: 'rgb(178, 56, 48)',
     skill: [
       'React.js',
       'TypeScript',
@@ -151,7 +157,8 @@ export const workInfo = [
     id: 202303,
     name: 'Org Issue App',
     period: '2023.03.25 - 2023.03.27',
-    Contribution: '100%',
+    contribution: '100%',
+    color: 'rgb(65,121,178)',
     skill: [
       'React.js',
       'TypeScript',
@@ -175,7 +182,8 @@ export const workInfo = [
     id: 202304,
     name: 'MeowMeow Album',
     period: '2023.08.11 - 2023.09.20',
-    Contribution: '100%',
+    contribution: '100%',
+    color: 'rgb(50,114,92)',
     skill: ['JavaScript', 'HTML', 'CSS'],
     list: [
       '고양이 사진이 저장된 폴더들이 나오고, 폴더를 클릭하면 또다른 폴더 또는 사진 목록들이 나옴',
@@ -191,7 +199,8 @@ export const workInfo = [
     id: 202201,
     name: 'Momentum',
     period: '2022.01.23 - 2022.01.27',
-    Contribution: '100%',
+    contribution: '100%',
+    color: 'rgb(70,85,143)',
     skill: ['JavaScript', 'HTML', 'CSS'],
     list: [
       '이름으로 간단하게 할 수 있는 로그인 기능',
@@ -209,14 +218,32 @@ export const workInfo = [
   },
 ];
 
-export const playvoiceWork = {
+export interface IPlayvoiceWorkInto {
+  id: number;
+  name: string;
+  color: string;
+  list: {
+    name: string;
+    period: string;
+    contribution: string;
+    skill: string[];
+    des: string[];
+    img: string[];
+  }[];
+  des: string[];
+  img: string[];
+  issue: string[];
+  use: string[];
+}
+export const playvoiceWorkInfo = {
   id: 202012,
   name: 'playvoice.org',
+  color: 'rgb(55,116,55)',
   list: [
     {
       name: 'PlayKick (플레이킥)',
       period: '2020.03 - 2020.09',
-      contribute: '60%',
+      contribution: '60%',
       skill: [
         'JavaScript',
         'jQuery',
@@ -236,7 +263,7 @@ export const playvoiceWork = {
     {
       name: 'PlaySquare (플레이스퀘어)',
       period: '2018.09 - 2019.06',
-      contribute: '40%',
+      contribution: '40%',
       skill: ['JavaScript', 'jQuery', 'Thymeleaf', 'BootStrap', 'CSS'],
       des: [
         '플레이보이스의 커뮤니티 학습 게시판. 영어에 대해 궁금한 점을 질문하고 답변할 수 있는 공간. 총 5가지 앱이 있음.',
@@ -251,7 +278,7 @@ export const playvoiceWork = {
     {
       name: 'Pictionary (픽셔너리)',
       period: '2018.10 - 2019.05',
-      contribute: '30%',
+      contribution: '30%',
       skill: ['JavaScript', 'jQuery', 'Thymeleaf', 'BootStrap', 'CSS'],
       des: [
         '동사와 동사구 중심으로 구성된 이미지 기반 오픈 사전.',
@@ -263,7 +290,7 @@ export const playvoiceWork = {
     {
       name: 'DictationBook (딕테이션북)',
       period: '2018.12 - 2019.03',
-      contribute: '20%',
+      contribution: '20%',
       skill: [
         'JavaScript',
         'jQuery',
@@ -281,7 +308,7 @@ export const playvoiceWork = {
     {
       name: 'PlayvoiceBook (플레이보이스북)',
       period: '2018.04 - 2019.03',
-      contribute: '30%',
+      contribution: '30%',
       skill: ['JavaScript', 'jQuery', 'Thymeleaf', 'BootStrap', 'CSS'],
       des: [
         '일상적 대회에 자주 사용되거나 기억하기 편리한 문장을 패턴으로 학습할 수 있음.',
@@ -289,15 +316,28 @@ export const playvoiceWork = {
       ],
       img: ['playvoicebook.png'],
     },
+    {
+      name: 'MyPage (마이페이지)',
+      period: '2019.04 - 2020.09',
+      contribution: '40%',
+      skill: [
+        'JavaScript',
+        'jQuery',
+        'Chart.js',
+        'Thymeleaf',
+        'BootStrap',
+        'CSS',
+      ],
+      des: [
+        'playvoice 회원들의 통합 랭킹 제공, 각 앱마다 학습 랭킹 제공',
+        '특정 랭킹 점수에 도달하면 레벨 업을 위한 테스트 진행',
+        '알람 기능과 친구추가 기능',
+        '학습한 컨텐츠와 댓글 보기 기능',
+        '학습 랭킹 정보와 chart를 통한 비쥬얼적인 학습능률 확인',
+      ],
+      img: ['mypage.png', 'mypage2.png'],
+    },
   ],
-  des: [
-    'playvoice 회원들의 통합 랭킹 제공, 각 앱마다 학습 랭킹 제공',
-    '특정 랭킹 점수에 도달하면 레벨 업을 위한 테스트 진행',
-    '알람 기능과 친구추가 기능',
-    '학습한 컨텐츠와 댓글 보기 기능',
-    '학습 랭킹 정보와 chart를 통한 비쥬얼적인 학습능률 확인',
-  ],
-  img: ['mypage.png', 'mypage2.png'],
   issue: [
     '네이버만큼이나 많은 데이터와 화면 UI들로 인해 JavaScript로 작업해야하는 부분이 많았음. 해당 코드들을 선언형 스타일로 작성하였기 때문에 가독성이 떨어지며 유지보수하기가 불편함.<br/> &rarr; 주석 규칙을 정하고 서버와 통신하는 JS 코드는 js 파일로 따로 분리했으며 dom을 handling 하는 JS 코드들은 HTML 파일 맨 위에 순서대로 배치',
     '대부분의 등록, 수정, 삭제 과정을 비동기로 진행하였음. 회원이 컨텐츠를 등록하면 즉시 컨텐츠를 화면에 보여주며, 영어예문은 영어 음성을 만들어 바로 voice로 들려줘야하는 어려움이 있었음.<br/> &rarr; playvoice_audio.js라는 공통 오디오 모듈을 만들어 버튼에 정해진 class 명만 붙이면 예문이 재생되도록 구현하여 해결. 비동기로 화면에 등록되는 HTML 코드의 비어있는 버전을 파일 가장 하단에 배치하여 clone을 한 후 컨텐츠를 넣는 방식으로 해결',

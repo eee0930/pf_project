@@ -48,7 +48,7 @@ interface IBackDivide {
   prevIdx: number;
   isNext: boolean;
 }
-export default function BackDivide({ idx, prevIdx, isNext }: IBackDivide) {
+export default function BgEffect({ idx, prevIdx, isNext }: IBackDivide) {
   const backColor = useMemo(() => backColors[idx], [idx]);
   const prevBackColor = useMemo(() => backColors[prevIdx], [prevIdx]);
   return (

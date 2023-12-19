@@ -81,13 +81,13 @@ export default function DisplayButton({
   handleOpen,
   handleGather,
 }: IDisplayButton) {
-  const [leftActive, setLeftActive] = useState(true);
+  const [isLeftActive, setIsLeftActive] = useState(true);
   const handleClickSwitch = useCallback((isLeft: boolean) => {
     if (isLeft) {
-      setLeftActive(true);
+      setIsLeftActive(true);
       handleGather();
     } else {
-      setLeftActive(false);
+      setIsLeftActive(false);
       handleOpen();
     }
   }, []);
@@ -95,18 +95,18 @@ export default function DisplayButton({
     <ButtonWrapper>
       <Switch
         onClick={() => handleClickSwitch(true)}
-        className={`${leftActive ? 'active' : ''}`}
+        className={`${isLeftActive ? 'active' : ''}`}
       >
-        {leftActive && <Active layoutId="switch" />}
+        {isLeftActive && <Active layoutId="switch" />}
         <ModeCover>
           <ModeIcon />
         </ModeCover>
       </Switch>
       <Switch2
         onClick={() => handleClickSwitch(false)}
-        className={`${leftActive ? '' : 'active'}`}
+        className={`${isLeftActive ? '' : 'active'}`}
       >
-        {!leftActive && <Active layoutId="switch" />}
+        {!isLeftActive && <Active layoutId="switch" />}
         <DotCover>
           <DotIcon />
           <DotIcon />
