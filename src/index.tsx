@@ -10,7 +10,7 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <div>
+  <React.StrictMode>
     <HelmetProvider>
       <ThemeProvider theme={lightTheme}>
         <GlobalStyle />
@@ -18,5 +18,5 @@ root.render(
         <App />
       </ThemeProvider>
     </HelmetProvider>
-  </div>
+  </React.StrictMode>
 );
