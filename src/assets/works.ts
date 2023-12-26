@@ -116,7 +116,7 @@ export const workInfo = [
       'Mobile과 PC 유저 모두를 위한 반응형 디자인',
     ],
     issue: [
-      'Some Origin 정책에 의해 API를 불러오지 못하는 문제<br/> &rarr; JsonP 방법을 이용하여 script 태그에 api url을 호출하고 callback 받은 함수의 매개변수로 데이터를 받아 화면에 표시함',
+      'Same Origin 정책에 의해 API를 불러오지 못하는 문제<br/> &rarr; JsonP 방법을 이용하여 script 태그에 api url을 호출하고 callback 받은 함수의 매개변수로 데이터를 받아 화면에 표시함',
       'Home화면에서 5초마다 한번씩 배너를 변경하기 위헤 setTimeout 기능을 썼지만 timeout이 한번 발생될 때마다 state들이 모두 업데이트되는 버그 발생<br/> &rarr; setTimeout을 정의한 변수를 담을 state를 정의한 후 useEffect 안에서 배너 변경 감지시 timeout 변수를 삭제한 후 다시 정의하여 해결',
       'Best Seller 탭에서 layout component를 따로 만들어 그 안에서 scroll이 움직이도록 구현하였기 때문에 useScroll hook이 적용되지 않는 문제가 생김<br/> &rarr; useRef에 이동할 target div를 배열로 담아 scrollIntoView를 이용하여 스크롤 이동을 구현하여 해결함',
       '각 책들의 미리보기 이미지 정보를 미리 알 수 없음 (이미지의 404 에러를 통해 미리보기 이미지 유무를 알 수 있음)<br/>&rarr; 이미지 url을 string으로 미리 만든 후 onError를 이용하여 cover 이미지로 교체함',
@@ -254,7 +254,7 @@ export const playvoiceWorkInfo = {
       ],
       des: [
         '학습앱인 픽셔너리와 플레이보이스북을 복습하기 위한 게이미케이션 앱. 총 3가지 앱이 있음.',
-        '1. Detective Julie: 픽셔너리에 속하는 게이미케이션 학습 앱. 그림을 보고 어떤 예문인지 추리하는 게임. 픽셔너리의 단어를 기억하는 것이 아니라 말로 옮길 수 있도록 연습하는 있음.',
+        '1. Detective Julie: 픽셔너리에 속하는 게이미케이션 학습 앱. 그림을 보고 어떤 예문인지 추리하는 게임. 픽셔너리의 단어를 기억하는 것이 아니라 말로 옮길 수 있도록 연습할 수 있음.',
         '2. Egg Shot: 플레이보이스북에 속하는 게이미케이션 학습 앱. 우리말 문장을 보고 하단의 단어를 클릭하여 영어문장을 완성하는 게임. 플레이보이스북으로 학습한 예문들의 단어와 어순을 학습할 수 있음.',
         '3. Johny Deck: 플레이보이스북에 속하는 게이미케이션 학습 앱. 카드에 쓰인 우리말 문장을 보고 마스터 여부에 따라 슬라이드로 넘기는 게임. ’I am a student.’처럼 바로 말할 수 있는 표현들을 골라내어 학습한 예문들을 마스터했는지 확인 할 수 있음.',
       ],

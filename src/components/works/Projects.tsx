@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { workInfo } from '../../assets/works';
-import { backColors, titles } from '../../assets/ment';
+import { titles } from '../../assets/ment';
 import { useMemo } from 'react';
 
 interface IProject {
