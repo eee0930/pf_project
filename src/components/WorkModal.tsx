@@ -108,10 +108,12 @@ const UrlContent = styled.div`
   line-height: 1.8;
   letter-spacing: -0.02em;
   font-size: 15px;
+  font-family: 'IBM Plex Sans KR', sans-serif;
   span {
     display: inline-block;
     margin: 0.2rem 0;
     font-weight: 600;
+    font-family: 'Poppins', sans-serif;
   }
   a {
     overflow-wrap: break-word;
