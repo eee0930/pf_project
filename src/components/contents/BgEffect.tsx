@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { backColors } from '../../assets/ment';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useMemo } from 'react';
 
 const BackgroundContainer = styled.div`
   height: 100%;
@@ -49,8 +48,8 @@ interface IBackDivide {
   isNext: boolean;
 }
 export default function BgEffect({ idx, prevIdx, isNext }: IBackDivide) {
-  const backColor = useMemo(() => backColors[idx], [idx]);
-  const prevBackColor = useMemo(() => backColors[prevIdx], [prevIdx]);
+  const backColor = backColors[idx];
+  const prevBackColor = backColors[prevIdx];
   return (
     <BackgroundContainer>
       <AnimatePresence custom={isNext}>

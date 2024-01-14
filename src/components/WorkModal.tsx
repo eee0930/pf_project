@@ -1,8 +1,8 @@
-import { useMemo } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { TitleCover } from '../assets/globalStyles';
 import { workLen, workList } from '../assets/works';
+import { linkSvg } from '../assets/svgs';
 import MoniterImg from './contents/MoniterImg';
 import Playvoice from './works/Playvoice';
 import Projects from './works/Projects';
@@ -107,19 +107,39 @@ const UrlContent = styled.div`
   margin-top: 2rem;
   line-height: 1.8;
   letter-spacing: -0.02em;
-  font-size: 15px;
+  font-size: 16px;
   font-family: 'IBM Plex Sans KR', sans-serif;
+  transition: color 0.3s ease;
   span {
     display: inline-block;
     margin: 0.2rem 0;
     font-weight: 600;
+    font-size: 0.95em;
     font-family: 'Poppins', sans-serif;
   }
   a {
     overflow-wrap: break-word;
+    position: relative;
+    &:hover {
+      color: ${(props) => props.theme.main2};
+      svg {
+        fill: ${(props) => props.theme.main2};
+        stroke: ${(props) => props.theme.main2};
+      }
+    }
   }
   @media (min-width: 1200px) {
-    font-size: 16px;
+    font-size: 17px;
+  }
+`;
+const LinkIcon = styled.span`
+  position: relative;
+  top: 3px;
+  svg {
+    fill: #777;
+    stroke: #777;
+    stroke-width: 1.5px;
+    transition: fill 0.3s ease, stroke 0.3s ease;
   }
 `;
 const DesContent = styled.div`
@@ -174,10 +194,7 @@ interface IWorkModal {
   callback: () => void;
 }
 export default function WorkModal({ idx, callback }: IWorkModal) {
-  const { name, color, logo, git, url, des } = useMemo(
-    () => workList[idx],
-    [idx]
-  );
+  const { name, color, logo, git, url, des } = workList[idx];
   return (
     <ModalContainer>
       <BackgroundContainer
@@ -219,15 +236,17 @@ export default function WorkModal({ idx, callback }: IWorkModal) {
               <UrlContent>
                 <span style={{ color: color[1] }}>Git :</span>{' '}
                 <a href={git} {...LINK_DEFAULT}>
-                  {git}
+                  {git}{' '}
+                  <LinkIcon dangerouslySetInnerHTML={{ __html: linkSvg }} />
                 </a>
                 <br />
                 <span style={{ color: color[1] }}>Website :</span>{' '}
                 {idx === workLen - 1 ? (
-                  `${url} (현재 운영 중이지 않음)`
+                  `${url} (폐업으로 인한 운영 중단)`
                 ) : (
                   <a href={url} {...LINK_DEFAULT}>
-                    {url}
+                    {url}{' '}
+                    <LinkIcon dangerouslySetInnerHTML={{ __html: linkSvg }} />
                   </a>
                 )}
               </UrlContent>

@@ -95,7 +95,7 @@ const Introduction = styled(motion.div)`
     margin-right: 1rem;
   }
   @media (min-width: 1200px) {
-    margin-right: 5rem;
+    margin-right: 8rem;
   }
 `;
 

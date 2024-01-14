@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import BgEffect from './contents/BgEffect';
 import GatherCards from './contents/GatherCards';
@@ -88,7 +88,7 @@ export default function ContentSection() {
   const [prevIdx, setPrevIdx] = useState(workLen - 1);
   const [isNext, setIsNext] = useState(true);
   const [isGather, setIsGather] = useState(true);
-  const getNextIdx = (isNext: boolean) => {
+  const getNextIdx = useCallback((isNext: boolean) => {
     if (isNext) {
       setIsNext(true);
       setIdx((prev) => (prev + 1 > workLen - 1 ? 0 : prev + 1));
@@ -96,7 +96,7 @@ export default function ContentSection() {
       setIsNext(false);
       setIdx((prev) => (prev - 1 < 0 ? workLen - 1 : prev - 1));
     }
-  };
+  }, []);
   useEffect(() => {
     setNextIdx(() => (idx + 1 > workLen - 1 ? 0 : idx + 1));
     setPrevIdx(() => {

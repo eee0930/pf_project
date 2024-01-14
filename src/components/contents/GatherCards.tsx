@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { styled } from 'styled-components';
 import { AnimatePresence, motion } from 'framer-motion';
 import WorkModal from '../WorkModal';
@@ -77,13 +77,13 @@ export default function GatherCards({
   const { name, color, eng, logo } = useMemo(() => workList[idx], [idx]);
   const nextWork = useMemo(() => workList[nextIdx], [nextIdx]);
 
-  const handleDragEnd = useCallback((swipe: number) => {
+  const handleDragEnd = (swipe: number) => {
     if (swipe < -swipeConfidenceThreshold) {
       callBackNext(true);
     } else if (swipe > swipeConfidenceThreshold) {
       callBackNext(false);
     }
-  }, []);
+  };
 
   return (
     <>

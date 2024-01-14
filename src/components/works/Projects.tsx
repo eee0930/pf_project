@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { workInfo } from '../../assets/works';
 import { titles } from '../../assets/ment';
-import { useMemo } from 'react';
 
 interface IProject {
   idx: number;
@@ -104,10 +103,8 @@ const Number = styled.span`
   }
 `;
 export default function Projects({ idx }: IProject) {
-  const { period, contribution, skill, color, list, issue, use } = useMemo(
-    () => workInfo[idx],
-    [idx]
-  );
+  const { period, contribution, skill, color, list, issue, use } =
+    workInfo[idx];
   return (
     <ProjectWrapper>
       <DefaultTitleSection>

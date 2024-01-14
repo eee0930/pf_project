@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { gitSvg, introSvgs } from '../assets/svgs';
 import { gitUrl } from '../assets/ment';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import AboutMe from './AboutMe';
 import ContactMe from './ContactMe';
 
@@ -133,8 +133,8 @@ const Shapes = styled.span`
 export default function Header() {
   const [isOpenAboutMe, setIsOpenAboutMe] = useState(false);
   const [isOpenContactMe, setIsOpenContactMe] = useState(false);
-  const closeAboutMeModal = () => setIsOpenAboutMe(false);
-  const closeContactMeModal = () => setIsOpenContactMe(false);
+  const closeAboutMeModal = useCallback(() => setIsOpenAboutMe(false), []);
+  const closeContactMeModal = useCallback(() => setIsOpenContactMe(false), []);
   return (
     <>
       <PortfolioHeader className="row">
