@@ -141,10 +141,10 @@ export const workInfo = [
       'Framer-Motion',
     ],
     list: [
-      `<img src="${process.env.PUBLIC_URL}/works/movie1.gif" loading="lazy" alt="netflix clone" /> <br/> movie, tv show, weekly trending 탭에서 각각의 최신 컨텐츠, 인기 컨텐츠 목록들을 확인할 수 있음`,
-      `<img src="${process.env.PUBLIC_URL}/works/movie2.gif" loading="lazy" alt="netflix clone" /> <br/> 컨텐츠를 클릭 시 컨텐츠 정보와 배우 정보 등을 확인 할 수 있음`,
-      `<img src="${process.env.PUBLIC_URL}/works/movie3.gif" loading="lazy" alt="netflix clone" /> <br/> 컨텐츠 상세보기의 이미지에 마우스를 올릴 시 관련 컨텐츠의 trailer 영상을 볼 수 있음`,
-      `<img src="${process.env.PUBLIC_URL}/works/movie4.gif" loading="lazy" alt="netflix clone" /> <br/> 오른쪽 상단의 검색창을 통해 원하는 검색어를 입력하면 관련 movie, tv, actor 정보를 확인할 수 있음`,
+      `movie, tv show, weekly trending 탭에서 각각의 최신 컨텐츠, 인기 컨텐츠 목록들을 확인할 수 있음<br/><br/><img src="${process.env.PUBLIC_URL}/works/movie1.gif" loading="lazy" alt="netflix clone" /> <br/><br/> `,
+      `컨텐츠를 클릭 시 컨텐츠 정보와 배우 정보 등을 확인 할 수 있음<br/><br/><img src="${process.env.PUBLIC_URL}/works/movie2.gif" loading="lazy" alt="netflix clone" /> <br/><br/> `,
+      `컨텐츠 상세보기의 이미지에 마우스를 올릴 시 관련 컨텐츠의 trailer 영상을 볼 수 있음<br/><br/><img src="${process.env.PUBLIC_URL}/works/movie3.gif" loading="lazy" alt="netflix clone" /> <br/><br/>`,
+      `오른쪽 상단의 검색창을 통해 원하는 검색어를 입력하면 관련 movie, tv, actor 정보를 확인할 수 있음<br/><br/><img src="${process.env.PUBLIC_URL}/works/movie4.gif" loading="lazy" alt="netflix clone" /> <br/><br/> `,
     ],
     issue: [
       '상세보기 모달을 띄우고나서 닫을 시 모달의 위치가 정해진 이유때문에 스크롤이 방금 클릭한 컨텐츠에 위치하지 않는 문제가 생김<br/> &rarr; framer-motion의 useScroll hook을 이용하여 현재 스크롤 위치 정보를 받아온 후 모달이 열리면 top을 해당 정보로 변경하여 해결',
@@ -339,10 +339,10 @@ export const playvoiceWorkInfo = {
     },
   ],
   issue: [
-    '네이버만큼이나 많은 데이터와 화면 UI들로 인해 JavaScript로 작업해야하는 부분이 많았음. 해당 코드들을 선언형 스타일로 작성하였기 때문에 가독성이 떨어지며 유지보수하기가 불편함.<br/> &rarr; 주석 규칙을 정하고 서버와 통신하는 JS 코드는 js 파일로 따로 분리했으며 dom을 handling 하는 JS 코드들은 HTML 파일 맨 위에 순서대로 배치',
-    '대부분의 등록, 수정, 삭제 과정을 비동기로 진행하였음. 회원이 컨텐츠를 등록하면 즉시 컨텐츠를 화면에 보여주며, 영어예문은 영어 음성을 만들어 바로 voice로 들려줘야하는 어려움이 있었음.<br/> &rarr; playvoice_audio.js라는 공통 오디오 모듈을 만들어 버튼에 정해진 class 명만 붙이면 예문이 재생되도록 구현하여 해결. 비동기로 화면에 등록되는 HTML 코드의 비어있는 버전을 파일 가장 하단에 배치하여 clone을 한 후 컨텐츠를 넣는 방식으로 해결',
+    '9가지 학습앱의 방대한 데이터와 화면 UI들로 인해 JavaScript로 작업해야하는 부분이 많았음. 해당 코드들을 선언형 스타일로 작성하였기 때문에 가독성이 떨어지며 유지보수하기가 불편함.<br/> &rarr; 주석 규칙을 정하고 서버와 통신하는 JS 코드는 js 파일로 따로 분리했으며 dom을 handling 하는 JS 코드들은 HTML 파일 맨 위에 순서대로 배치',
+    '대부분의 등록, 수정, 삭제 과정을 ajax를 이용한 비동기로 진행하였음. 회원이 컨텐츠를 등록하면 즉시 컨텐츠를 화면에 보여주며, 영어예문은 영어 음성을 만들어 바로 voice로 들려줘야하는 어려움이 있었음.<br/> &rarr; playvoice_audio.js라는 공통 오디오 모듈을 만들어 버튼에 정해진 class 명만 붙이면 예문이 재생되도록 구현하여 해결. 비동기로 화면에 등록되는 HTML 코드의 비어있는 버전을 파일 가장 하단에 배치하여 clone을 한 후 컨텐츠를 넣는 방식으로 해결',
     '유료 멤버십을 위한 결제 모듈 넣기, 결제 모듈 창을 띄우기 위해 필요한 정보, 리다이렉트로 필요한 페이지들 등<br/> &rarr; 결제 모듈 기능을 팀장인 저는 전체를, 팀원 각자는 맡은 부분을 공부한 후 각자 발표를 함. 이니시스 계약 후 발표한 자료에 따라 화면, 서버, js 파일 순으로 개발 진행. 가격은 100원으로 책정한 후 약 50번 이상의 테스트 후 완벽히 구동시킴',
-    '회원들이 영어문장을 등록한 후 단어에 빨강색으로 강조 표시를 하는 입력란이 많음. 입력란을 input이 아닌 div로 만들고, 대부분 회원들이 영어 문장을 복사해오기때문에 HTML 태그가 그대로 입력되거나 영어가 아닌 문자열이 입력되는 경우가 많았음.<br/> &rarr; 클립보드의 스타일 서식을 모두 지우고 순수 텍스트만 붙여넣기 되도록 구현. 해당 구현을 모듈로 따로 만들어 필요한 화면에 넣어 해결',
+    '회원들이 영어문장을 등록한 후 단어에 빨강색으로 강조 표시를 하는 입력란이 많음. 입력란을 input이 아닌 div로 만들고, 대부분 회원들이 영어 문장을 복사해오기때문에 HTML 태그가 그대로 입력되거나 영어가 아닌 문자열이 입력되는 경우가 많았음.<br/> &rarr; 클립보드의 스타일 서식을 모두 지우고 순수 텍스트만 붙여넣기 되도록 구현. 해당 구현을 모듈화하여 필요한 화면에 넣어 해결',
   ],
   use:
     "무료 회원들은 출석 및 컨텐츠 작성으로 '플레이포인트'를 얻고, 해당 플레이포인트 차감으로 9개의 학습앱을 각각 학습할 수 있음. " +
