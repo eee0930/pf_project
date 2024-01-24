@@ -189,6 +189,11 @@ const LINK_DEFAULT = {
   rel: 'noreferrer',
 };
 
+const ANIMATE = {
+  initial: 'initial',
+  animate: 'animate',
+};
+
 interface IWorkModal {
   idx: number;
   callback: () => void;
@@ -199,23 +204,20 @@ export default function WorkModal({ idx, callback }: IWorkModal) {
     <ModalContainer>
       <BackgroundContainer
         variants={backgroundVariant}
-        initial="initial"
-        animate="animate"
+        {...ANIMATE}
         style={{ backgroundColor: color[0] }}
         onClick={callback}
       ></BackgroundContainer>
       <ModalWrapper
         variants={widthVariant}
-        initial="initial"
-        animate="animate"
+        {...ANIMATE}
         layoutId="work"
         transition={{ delay: 0.1, duration: 0.5 }}
       >
         <CloseButton onClick={callback}>&times;</CloseButton>
         <ModalContentSection
           variants={fadeVariant}
-          initial="initial"
-          animate="animate"
+          {...ANIMATE}
           transition={{ delay: 0.2, duration: 0.7 }}
         >
           <DefaultInfoSection className="row">
